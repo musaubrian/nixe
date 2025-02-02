@@ -1,0 +1,31 @@
+[user]
+	name=musaubrian
+	email=musaubrian15@gmail.com
+
+[init]
+	defaultBranch=main
+
+[core]
+	editor=nvim
+	pager=delta
+[delta]
+	; side-by-side = true
+	navigate = true
+
+[interactive]
+	diffFilter = delta --color-only
+
+[alias]
+	lg = log --oneline --graph --decorate
+	rem = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+
+	conflicts = !git ls-files -u | cut -f 2 | sort -u
+
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
+
+[diff]
+	colormoved = "default"
+	colormovedws = "allow-indentation-change"

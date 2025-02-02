@@ -1,0 +1,32 @@
+alias cleand="~/scripts/cleand.sh"
+alias tmx="~/scripts/tmx.sh"
+alias nv="nvim"
+alias vim="nvim"
+alias p="cd ~/personal/"
+alias w="cd ~/work/"
+alias t="cd ~/thirdparty/"
+alias clone="~/scripts/clone.sh"
+alias nvc="cd ~/.config/nvim/ && nvim ."
+alias renix="~/scripts/renix.sh"
+alias hr="~/scripts/hr.sh"
+alias yt="~/scripts/yt.sh"
+alias ...=../..
+alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias l='ls -lah'
+alias la='ls -lAh'
+alias ll='ls -lh'
+alias ls='ls --color=tty'
+alias lsa='ls -lah'
+alias md='mkdir -p'
+alias bx='bunx'
+alias nex="nvim $HOME/personal/dotfiles/home/configuration.nix"
+alias reload='source ~/.profile && clear'
+alias f="~/scripts/f.sh"
+alias wget="~/scripts/wget.sh"
+alias ffmchop="~/scripts/ffmchop.sh"
+alias journal="~/scripts/jt.sh"
+alias jot="~/scripts/jot.sh"
+alias h264="~/scripts/h264Convert"
+alias gt="git"
+alias gg="python3 ~/scripts/gg.py"
+alias glow="glow -s 'notty'"

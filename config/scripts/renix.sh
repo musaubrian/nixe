@@ -30,7 +30,7 @@ git add .
 git commit -m "$gen"
 git push origin main
 
-pushd "$ROOT_DIR/stash"
+pushd "$STASH_DIR"
 git add .
 git commit -m "stash: follow $gen"
 git push origin main

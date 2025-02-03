@@ -23,19 +23,25 @@
   home.packages = with pkgs; [
     xorg.xcursorthemes
 
+    delta
+    ripgrep
+    tmux
+    ffmpeg
     wofi
     grim
     slurp
     pywal16
     nwg-look
 
-    fastfetc
+    fzf
+    fastfetch
     yt-dlp
     alejandra
     hugo
     uv
     glow
     bun
+    btop
 
     nil
     gopls
@@ -56,6 +62,16 @@
     php83
     php83Packages.composer
     nodejs_22
+
+    chromium
+    mpv
+    networkmanagerapplet
+    ansible
+    telegram-desktop
+    android-studio
+    zathura
+    libreoffice
+    httpie-desktop
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

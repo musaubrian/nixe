@@ -86,6 +86,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
+    iosevka
   ];
 
   # List packages installed in system profile.
@@ -109,6 +110,7 @@
     sshfs
     unzip
     tree
+    foot
 
     home-manager
     neovim

@@ -50,6 +50,12 @@ return {
       }
     end, { desc = "[S]earch [S]cripts" })
 
+    vim.keymap.set("n", "<leader>nn", function()
+      builtin.find_files {
+        cwd = "~/personal/nixe",
+      }
+    end, {})
+
     vim.keymap.set("n", "<leader><space>", builtin.oldfiles, { desc = "[?] Find recently opened files" })
     vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Search [G]it [F]iles" })
     vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[S]earch [F]iles" })

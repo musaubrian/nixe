@@ -20,7 +20,43 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  home.packages = with pkgs; [];
+  home.packages = with pkgs; [
+    xorg.xcursorthemes
+
+    wofi
+    grim
+    slurp
+    pywal16
+    nwg-look
+
+    fastfetc
+    yt-dlp
+    alejandra
+    hugo
+    uv
+    glow
+    bun
+
+    nil
+    gopls
+    lua-language-server
+    marksman
+    python312Packages.python-lsp-server
+    typescript-language-server
+    tailwindcss-language-server
+
+    prettierd
+    stylua
+    phpactor
+    ruff
+
+    python312
+    go
+    rustup
+    php83
+    php83Packages.composer
+    nodejs_22
+  ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [

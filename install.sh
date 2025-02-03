@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-sudo ln -sv "$(realpath ./config/configuration.nix)" /etc/nixos/configuration.nix
-
-echo "Building NixOS..."
-
 manage_keys() {
     mkdir -p ~/.ssh
     ansible-vault decrypt ./keys/*
@@ -26,6 +22,9 @@ manage_stash() {
 }
 
 main() {
+    sudo ln -sv "$(realpath ./config/configuration.nix)" /etc/nixos/configuration.nix
+
+    echo "Building NixOS..."
     sudo nixos-rebuild switch &>/tmp/nixos-switch.log || \
         (cat /tmp/nixos-switch.log | grep error && false)
 
@@ -37,3 +36,5 @@ main() {
     git remote remove origin
     git remote add origin git@github.com:musaubrian/nixe
 }
+
+main

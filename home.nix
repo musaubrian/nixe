@@ -98,31 +98,33 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    HYPRCURSOR_THEME = "Bibata-Modern-Classic";
-    HYPRCURSOR_SIZE = 40;
-    XCURSOR_THEME = "Bibata-Modern-Classic";
-    XCURSOR_SIZE = 40;
   };
 
-  home.pointerCursor = let
-    getFrom = url: hash: name: {
-      gtk.enable = true;
-      x11.enable = true;
-      name = name;
-      size = 48;
-      package = pkgs.runCommand "moveUp" {} ''
-        mkdir -p $out/share/icons
-        ln -s ${pkgs.fetchzip {
-          url = url;
-          hash = hash;
-        }} $out/share/icons/${name}
-      '';
+  stylix = {
+    enable = true;
+    autoEnable = true;
+    image = ./config/wall.jpg;
+    polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Mordern-Ice";
     };
-  in
-    getFrom
-    "https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.7/Bibata-Modern-Classic.tar.xz"
-    "sha256-2Fd0OVSCgFZVLRAVo/MxgHp1qK5WUNhKY685XPYrBmk="
-    "Bibata-Morder-Classic";
+    fonts = {
+      monospace = {
+        name = "Iosevka Medium";
+        package = pkgs.iosevka;
+      };
+      sansSerif = {
+        package = pkgs.freefont_ttf;
+        name = "FreeSans";
+      };
+      serif = {
+        package = pkgs.freefont_ttf;
+        name = "FreeSerif";
+      };
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

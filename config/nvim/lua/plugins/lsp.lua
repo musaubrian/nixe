@@ -10,7 +10,6 @@ return {
         },
       },
     },
-    -- { "williamboman/mason.nvim", config = true },
     { "j-hui/fidget.nvim", event = "BufEnter", opts = {} },
     { "saghen/blink.cmp" },
   },
@@ -26,7 +25,7 @@ return {
       rust_analyzer = {},
       nil_ls = {},
       volar = {
-        filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+        filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact", "json" },
         init_options = {
           vue = {
             hybridMode = false,

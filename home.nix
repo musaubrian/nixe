@@ -72,6 +72,7 @@
     zathura
     libreoffice
     httpie-desktop
+    kdePackages.kdenlive
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

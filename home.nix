@@ -21,6 +21,7 @@
   # environment.
 
   home.packages = with pkgs; [
+    dejavu_fonts
     xorg.xcursorthemes
 
     delta

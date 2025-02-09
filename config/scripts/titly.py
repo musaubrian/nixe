@@ -22,15 +22,15 @@ def main(path):
 
 if __name__ == "__main__":
     opts = ["m", "v", "y"]
-    if len(sys.argv) == 1:
-        print(f"Invalid choice, {opts}")
-    if len(sys.argv) > 1:
-        choice = sys.argv[1]
-        if choice not in opts:
-            print(f"Invalid choice, {opts}")
-        elif choice == opts[2]:
-            main(to_yt_vids)
-        elif choice == opts[1]:
-            main(to_vids)
-        else:
-            main(to_music)
+    if len(sys.argv) != 2:
+        print(f"Please provide one option: {opts}")
+        sys.exit(1)
+
+    choice = sys.argv[1]
+    paths = {"y": to_yt_vids, "v": to_vids, "m": to_music}
+
+    if choice not in paths:
+        print(f"Invalid choice. Please use one of: {opts}")
+        sys.exit(1)
+
+    main(paths[choice])

@@ -22,6 +22,7 @@
 
   home.packages = with pkgs; [
     dejavu_fonts
+    xorg.fontadobeutopiatype1
     xorg.xcursorthemes
 
     delta

@@ -81,7 +81,7 @@
     builtins.elem (pkgs.lib.getName pkg) [
       "android-studio-stable"
       "httpie-desktop"
-      "xorg.fontadobeutopiatype1"
+      "font-adobe-utopia-type1"
     ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

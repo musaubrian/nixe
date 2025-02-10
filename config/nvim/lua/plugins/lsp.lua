@@ -22,7 +22,6 @@ return {
       templ = {},
       phpactor = {},
       tailwindcss = {},
-      ccls = {},
       rust_analyzer = {},
       nil_ls = {},
       volar = {

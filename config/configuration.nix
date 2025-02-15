@@ -39,12 +39,14 @@
     layout = "us";
     variant = "";
   };
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ulong = {
     isNormalUser = true;
     description = "ulong";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "libvirtd"];
     packages = with pkgs; [];
   };
 
@@ -147,6 +149,10 @@
     {
       from = 8000;
       to = 9000;
+    }
+    {
+      from = 21000;
+      to = 23000;
     }
   ];
 

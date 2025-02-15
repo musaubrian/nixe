@@ -22,7 +22,6 @@
 
   home.packages = with pkgs; [
     dejavu_fonts
-    xorg.fontadobeutopiatype1
     xorg.xcursorthemes
 
     delta
@@ -33,7 +32,6 @@
     grim
     slurp
     pywal16
-    nwg-look
 
     fzf
     fastfetch
@@ -74,14 +72,13 @@
     zathura
     libreoffice
     httpie-desktop
-    kdePackages.kdenlive
+    qemu
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [
       "android-studio-stable"
       "httpie-desktop"
-      "font-adobe-utopia-type1"
     ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -23,6 +23,7 @@ alias md='mkdir -p'
 alias bx='bunx'
 alias reload='source ~/.profile && clear'
 alias f="~/scripts/f.sh"
+alias ns="~/scripts/nix-shell.sh"
 alias wget="~/scripts/wget.sh"
 alias ffmchop="~/scripts/ffmchop.sh"
 alias journal="~/scripts/jt.sh"

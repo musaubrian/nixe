@@ -73,6 +73,7 @@
     libreoffice
     httpie-desktop
     qemu
+    arduino-ide
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

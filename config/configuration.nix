@@ -101,21 +101,15 @@
     kdePackages.breeze-icons
     hyprlock
     hypridle
-    wl-clipboard
     hyprpaper
+    wl-clipboard
+    wf-recorder
 
-    wget
-    git
-    gcc
-    gnumake
-    sqlite
     sshfs
-    unzip
-    tree
     foot
 
     home-manager
-    neovim
+    networkmanagerapplet
     feh
     pavucontrol
     brightnessctl

@@ -24,6 +24,14 @@
     dejavu_fonts
     xorg.xcursorthemes
 
+    wget
+    git
+    gcc
+    gnumake
+    sqlite
+    unzip
+    tree
+
     delta
     ripgrep
     tmux
@@ -42,6 +50,7 @@
     glow
     bun
     btop
+    neovim
 
     nil
     gopls
@@ -65,7 +74,6 @@
 
     chromium
     mpv
-    networkmanagerapplet
     ansible
     telegram-desktop
     android-studio
@@ -108,7 +116,6 @@
     image = ./config/wall.jpg;
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/ashes.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Mordern-Ice";

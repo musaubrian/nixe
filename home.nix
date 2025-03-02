@@ -81,6 +81,7 @@
     libreoffice
     httpie-desktop
     qemu
+    kdenlive
     arduino-ide
   ];
 

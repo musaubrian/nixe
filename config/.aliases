@@ -20,6 +20,7 @@ alias ll='ls -lh'
 alias ls='ls --color=tty'
 alias lsa='ls -lah'
 alias md='mkdir -p'
+alias wf="~/scripts/wf.sh"
 alias bx='bunx'
 alias reload='source ~/.profile && clear'
 alias f="~/scripts/f.sh"

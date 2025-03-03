@@ -1,10 +1,8 @@
 return {
   "saghen/blink.cmp",
-  dependencies = {
-    { "L3MON4D3/LuaSnip", version = "v2.*" },
-  },
-  version = "v0.*",
-  event = "InsertEnter",
+  dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
+  version = "*",
+  -- event = "InsertEnter",
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -18,6 +16,7 @@ return {
     },
 
     snippets = {
+      preset = "luasnip",
       expand = function(snippet)
         require("luasnip").lsp_expand(snippet)
       end,
@@ -33,7 +32,16 @@ return {
     },
 
     sources = {
-      default = { "lsp", "path", "luasnip", "buffer", "snippets" },
+      default = { "lsp", "path", "snippets", "buffer" },
+      providers = {
+        path = {
+          opts = {
+            get_cwd = function(_)
+              return vim.fn.getcwd()
+            end,
+          },
+        },
+      },
     },
     signature = { enabled = false },
     completion = {

@@ -59,6 +59,7 @@
     python312Packages.python-lsp-server
     typescript-language-server
     tailwindcss-language-server
+    blade-formatter
 
     prettierd
     stylua
@@ -81,8 +82,8 @@
     libreoffice
     httpie-desktop
     qemu
-    kdenlive
     arduino-ide
+    kdePackages.kdenlive
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

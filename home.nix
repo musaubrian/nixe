@@ -84,7 +84,6 @@
     qemu
     arduino-ide
     kdePackages.kdenlive
-    brave
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

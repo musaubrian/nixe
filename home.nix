@@ -73,7 +73,6 @@
     php83Packages.composer
     nodejs_22
 
-    chromium
     mpv
     ansible
     telegram-desktop

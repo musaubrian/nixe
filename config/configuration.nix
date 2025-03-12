@@ -39,6 +39,8 @@
     layout = "us";
     variant = "";
   };
+
+  virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
@@ -46,7 +48,7 @@
   users.users.ulong = {
     isNormalUser = true;
     description = "ulong";
-    extraGroups = ["networkmanager" "wheel" "libvirtd"];
+    extraGroups = ["networkmanager" "wheel" "libvirtd" "docker"];
     packages = with pkgs; [];
   };
 
@@ -58,8 +60,13 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+  };
 
   services.xserver.enable = true;
 
@@ -113,6 +120,8 @@
     feh
     pavucontrol
     brightnessctl
+
+    chromium
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

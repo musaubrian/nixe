@@ -48,7 +48,7 @@
     hugo
     uv
     glow
-    bun
+    pnpm
     btop
     neovim
 

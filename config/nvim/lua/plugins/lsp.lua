@@ -48,4 +48,3 @@ return {
     end
   end,
 }
---   volar = { init_options = { vue = { hybridMode = false, }, }, filetypes = { "typescript", "javascript", -- "javascriptreact", -- "typescriptreact", "vue", "json", }, },

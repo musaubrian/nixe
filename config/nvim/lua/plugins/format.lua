@@ -26,6 +26,7 @@ return {
         python = { "ruff_format" },
         blade = { "blade-formatter" },
         php = { "pint" },
+        rust = { "rustfmt" },
       },
     },
   },

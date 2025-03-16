@@ -118,7 +118,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+Shift+e layout toggle split
+bindsym $mod+Shift+\ layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -169,7 +169,7 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-for_window [class="firefox"] move to workspace $ws2
+for_window [class="chromium"] move to workspace $ws2
 workspace 4 output HDMI-1
 
 # reload the configuration file
@@ -180,7 +180,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 #Multiple monitors and stuff
-bindsym $mod+Shift+d exec xrandr --output HDMI-1 --auto --right-of eDP-1
+bindsym $mod+Shift+d exec xrandr --output HDMI-1 --auto --right-of eDP-1config
 #reset
 bindsym $mod+Shift+x exec xrandr --auto
 

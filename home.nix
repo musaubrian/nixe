@@ -55,7 +55,6 @@
     typescript-language-server
     tailwindcss-language-server
     blade-formatter
-    rust-analyzer
 
     prettierd
     stylua

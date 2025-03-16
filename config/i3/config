@@ -9,6 +9,9 @@ exec --no-startup-id  setxkbmap -option caps:escape
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# dont blind meself
+exec --no-startup-id brightnessctl s 100
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -66,6 +69,7 @@ floating_modifier $mod
 bindsym $mod+t exec st
 bindsym $mod+b exec chromium
 bindsym $mod+p exec pavucontrol
+bindsym $mod+e exec thunar
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -114,7 +118,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle

@@ -105,7 +105,7 @@ in {
       name = "st";
       src = fetchgit {
         url = "https://github.com/musaubrian/st";
-        sha256 = "sha256-OrSYktomlRbsUwbO7kFEO30iUb6ltazCYqH1wWzrcT8=";
+        sha256 = "sha256-FxcEKd9b5XVI8ce4q/BsPJgb9ZXkLE2kp6UdSzljU/k=";
       };
       nativeBuildInputs = [pkg-config];
       buildInputs = [xorg.libX11 xorg.libXft];

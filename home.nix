@@ -22,7 +22,6 @@
 
   home.packages = with pkgs; [
     dejavu_fonts
-    xorg.xcursorthemes
 
     wget
     git
@@ -36,10 +35,6 @@
     ripgrep
     tmux
     ffmpeg
-    wofi
-    grim
-    slurp
-    pywal16
 
     fzf
     fastfetch
@@ -102,40 +97,13 @@
     ".bashrc".source = ./config/.bashrc;
     ".bash_completions".source = ./config/.bash_completions;
     "scripts".source = ./config/scripts;
-    ".config/foot".source = ./config/foot;
-    ".config/hypr".source = ./config/hypr;
-    ".config/waybar".source = ./config/waybar;
     ".config/nvim".source = ./config/nvim;
+    ".config/i3".source = ./config/i3;
+    ".config/rofi".source = ./config/rofi;
   };
 
   home.sessionVariables = {
     EDITOR = "nvim";
-  };
-
-  stylix = {
-    enable = true;
-    autoEnable = true;
-    image = ./config/wall.jpg;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ashes.yaml";
-    cursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Mordern-Ice";
-    };
-    fonts = {
-      monospace = {
-        name = "Iosevka Medium";
-        package = pkgs.iosevka;
-      };
-      sansSerif = {
-        package = pkgs.freefont_ttf;
-        name = "FreeSans";
-      };
-      serif = {
-        package = pkgs.freefont_ttf;
-        name = "FreeSerif";
-      };
-    };
   };
 
   # Let Home Manager install and manage itself.

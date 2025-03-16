@@ -1,40 +1,25 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   pkgs,
   ...
-}: {
+}: let
+  inherit (pkgs) stdenv fetchgit pkg-config xorg;
+in {
   imports = [
-    # Include the results of the hardware scan.
-    # ./hardware-configuration.nix
     /etc/nixos/hardware-configuration.nix
   ];
 
-  # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "sminx"; # Define your hostname.
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+  networking.hostName = "sminx";
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = true;
 
-  # Set your time zone.
   time.timeZone = "Africa/Nairobi";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -44,7 +29,6 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ulong = {
     isNormalUser = true;
     description = "ulong";
@@ -52,26 +36,37 @@
     packages = with pkgs; [];
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  programs.hyprland.enable = true;
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
-  xdg.portal = {
+  # environment.sessionVariables = {
+  #   NIXOS_OZONE_WL = "1";
+  #   MOZ_ENABLE_WAYLAND = "1";
+  #   T_QPA_PLATFORM = "wayland";
+  # };
+
+  environment.pathsToLink = ["/libexec"];
+  services.displayManager.defaultSession = "none+i3";
+  services.xserver = {
     enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
-    ];
+    desktopManager = {
+      xterm.enable = true;
+    };
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu
+        i3status
+        rofi
+        i3lock
+        xclip
+        xsel
+      ];
+    };
   };
 
-  services.xserver.enable = true;
-
-  services.gvfs.enable = true; # Mount, trash, and other functionalities
-  services.tumbler.enable = true; # Thumbnail support for images
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
   programs.xfconf.enable = true;
   programs.thunar = {
     enable = true;
@@ -81,10 +76,9 @@
     ];
   };
 
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
-
   hardware.bluetooth.settings = {
     General = {
       Enable = "Source,Sink,Media,Socket";
@@ -98,49 +92,34 @@
     iosevka
   ];
 
-  # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    waybar
-    swaynotificationcenter
-    libnotify
-    libsForQt5.qt5.qtwayland #v5
-    kdePackages.qtwayland #v6
-    kdePackages.breeze-icons
-    hyprlock
-    hypridle
-    hyprpaper
-    wl-clipboard
-    wf-recorder
-
     sshfs
-    foot
-
     home-manager
     networkmanagerapplet
     feh
     pavucontrol
     brightnessctl
-
     chromium
-    telegram-desktop
+    # st build
+    (stdenv.mkDerivation {
+      name = "st";
+      src = fetchgit {
+        url = "https://github.com/musaubrian/st";
+        sha256 = "sha256-OrSYktomlRbsUwbO7kFEO30iUb6ltazCYqH1wWzrcT8=";
+      };
+      nativeBuildInputs = [pkg-config];
+      buildInputs = [xorg.libX11 xorg.libXft];
+      buildPhase = ''
+        make
+      '';
+      installPhase = ''
+        mkdir -p $out/bin
+        cp st $out/bin/
+      '';
+    })
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
   networking.firewall.enable = true;
-  # Open ports in the firewall.
-  # networking.firewall.allowedUDPPorts = [ ... ];
   networking.firewall.allowedTCPPortRanges = [
     {
       from = 1000;
@@ -160,11 +139,5 @@
     }
   ];
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.11";
 }

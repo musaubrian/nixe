@@ -8,13 +8,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
-    stylix,
     ...
   }: let
     system = "x86_64-linux";
@@ -25,7 +23,7 @@
 
       # Specify your home configuration modules here, for example,
       # the path to your home.nix.
-      modules = [stylix.homeManagerModules.stylix ./home.nix];
+      modules = [./home.nix];
 
       # Optionally use extraSpecialArgs
       # to pass through arguments to home.nix

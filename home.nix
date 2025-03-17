@@ -46,6 +46,7 @@
     pnpm
     btop
     neovim
+    flameshot
 
     nil
     gopls

@@ -79,6 +79,7 @@
     qemu
     arduino-ide
     kdePackages.kdenlive
+    obs-studio
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

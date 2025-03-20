@@ -22,6 +22,7 @@
 
   home.packages = with pkgs; [
     dejavu_fonts
+    nwg-look
 
     wget
     git

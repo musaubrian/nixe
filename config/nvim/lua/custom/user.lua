@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
 })
 
---[[Remove whitespaces at line ends]]
+--[[ Remove whitespaces at line ends ]]
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = me_group,
   pattern = "*",
@@ -48,10 +48,6 @@ vim.api.nvim_create_user_command("Term", function()
   vim.cmd.setlocal "splitbelow"
   vim.cmd "split |term"
 end, { desc = "Open terminal in split mode at the bottom" })
-
-vim.api.nvim_create_user_command("FTerm", function()
-  vim.cmd "term"
-end, { desc = "Open terminal in *full screen mode" })
 
 vim.diagnostic.config {
   virtual_text = true,

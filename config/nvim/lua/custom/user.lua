@@ -50,7 +50,10 @@ vim.api.nvim_create_user_command("Term", function()
 end, { desc = "Open terminal in split mode at the bottom" })
 
 vim.diagnostic.config {
-  virtual_text = true,
+  virtual_text = false,
+  virtual_lines = {
+    current_line = true,
+  },
 }
 
 vim.api.nvim_create_user_command("Todo", function()
@@ -66,6 +69,12 @@ end, {})
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
   callback = function(event)
+    -- does this work without blink, will see
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client and client:supports_method "textDocument/completion" then
+      vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = false })
+    end
+
     local nmap = function(keys, func, desc)
       if desc then
         desc = "LSP: " .. desc
@@ -80,6 +89,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
     nmap("<leader>rn", vim.lsp.buf.rename)
     nmap("<leader>ca", vim.lsp.buf.code_action)
+    -- its kinda neat
+    vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "signature help" })
   end,
 })
 

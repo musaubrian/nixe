@@ -31,6 +31,7 @@
     sqlite
     unzip
     tree
+    jq
 
     delta
     ripgrep

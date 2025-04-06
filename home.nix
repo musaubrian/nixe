@@ -32,6 +32,7 @@
     unzip
     tree
     jq
+    starship
 
     delta
     ripgrep
@@ -103,6 +104,7 @@
     ".config/nvim".source = ./config/nvim;
     ".config/i3".source = ./config/i3;
     ".config/rofi".source = ./config/rofi;
+    ".config/starship.toml".source = ./config/starship.toml;
   };
 
   home.sessionVariables = {

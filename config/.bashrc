@@ -56,7 +56,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-PS1='${debian_chroot:+($debian_chroot)}\w\r\n\$ '
+# PS1='${debian_chroot:+($debian_chroot)}\w\r\n\$ '
 
 # if [ "$color_prompt" = yes ]; then
 #     PS1='${debian_chroot:+($debian_chroot)}\e[1;34m\W\r\n\e[1;32m\$\e(B\e[m '
@@ -126,6 +126,7 @@ if command -v fzf-share >/dev/null; then
   source "$(fzf-share)/completion.bash"
 fi
 
+eval "$(starship init bash)"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then

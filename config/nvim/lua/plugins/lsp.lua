@@ -25,7 +25,7 @@ return {
       rust_analyzer = {},
       nil_ls = {},
       volar = {
-        filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact", "json" },
+        filetypes = { "vue", "javascript", "json" },
         init_options = {
           vue = {
             hybridMode = false,

@@ -49,6 +49,8 @@
     btop
     neovim
     flameshot
+    feh
+    rofi
 
     nil
     gopls
@@ -93,6 +95,7 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    ".xinitrc".source = ./config/.xinitrc;
     ".aliases".source = ./config/.aliases;
     ".gitconfig".source = ./config/.gitconfig;
     ".tmux.conf".source = ./config/.tmux.conf;

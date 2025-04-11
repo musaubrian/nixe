@@ -4,10 +4,46 @@
   ...
 }: let
   inherit (pkgs) stdenv fetchgit pkg-config xorg;
+
+  myDwm = stdenv.mkDerivation {
+    name = "dwm";
+    src = fetchgit {
+      url = "https://github.com/musaubrian/dwm";
+      sha256 = "sha256-Y5HbGCerdqO3Mbv7LSkrJQpUxOtePos3SO28w9c85U4=";
+    };
+    nativeBuildInputs = [pkg-config];
+    buildInputs = [
+      xorg.libX11
+      xorg.libXft
+      xorg.libXinerama
+    ];
+    buildPhase = "make";
+    installPhase = ''
+      mkdir -p $out/bin
+      cp dwm $out/bin/
+    '';
+  };
+
+  mySt = stdenv.mkDerivation {
+    name = "st";
+    src = fetchgit {
+      url = "https://github.com/musaubrian/st";
+      sha256 = "sha256-NTevI4NJFMbKZAZ6DEjg7k0fmGdFTsn5WPtksNf4tZg=";
+    };
+    nativeBuildInputs = [pkg-config];
+    buildInputs = [
+      xorg.libX11
+      xorg.libXft
+      pkgs.harfbuzz
+    ];
+    buildPhase = "make";
+    installPhase = ''
+      mkdir -p $out/bin
+      cp st $out/bin/
+    '';
+  };
 in {
-  imports = [
-    /etc/nixos/hardware-configuration.nix
-  ];
+  imports = [/etc/nixos/hardware-configuration.nix];
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
@@ -25,7 +61,7 @@ in {
     variant = "";
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker.enable = false;
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
@@ -39,35 +75,32 @@ in {
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # environment.sessionVariables = {
-  #   NIXOS_OZONE_WL = "1";
-  #   MOZ_ENABLE_WAYLAND = "1";
-  #   T_QPA_PLATFORM = "wayland";
-  # };
-
   environment.pathsToLink = ["/libexec"];
-  services.displayManager.defaultSession = "none+i3";
+
+  services.displayManager.defaultSession = "dwm";
   services.xserver = {
     enable = true;
-    desktopManager = {
-      xterm.enable = true;
-    };
+    displayManager.lightdm.enable = true;
+    desktopManager.xterm.enable = false;
+
     windowManager.i3 = {
       enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        rofi
-        i3lock
-        xclip
-        xsel
-      ];
+      extraPackages = with pkgs; [dmenu i3status i3lock];
     };
   };
+
+  environment.etc."X11/sessions/dwm.desktop".text = ''
+    [Desktop Entry]
+    Name=Custom DWM
+    Comment=Lightweight window manager
+    Exec=${myDwm}/bin/dwm
+    Type=Application
+  '';
 
   services.gvfs.enable = true;
   services.tumbler.enable = true;
   programs.xfconf.enable = true;
+
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [
@@ -93,34 +126,20 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    myDwm
+    mySt
+    xorg.xset
+    xss-lock
+    slock
     sshfs
-    home-manager
-    networkmanagerapplet
-    feh
+    xclip
+    xsel
     pavucontrol
     brightnessctl
+    networkmanagerapplet
+    acpi
+    home-manager
     chromium
-    # st build
-    (stdenv.mkDerivation {
-      name = "st";
-      src = fetchgit {
-        url = "https://github.com/musaubrian/st";
-        sha256 = "sha256-NTevI4NJFMbKZAZ6DEjg7k0fmGdFTsn5WPtksNf4tZg=";
-      };
-      nativeBuildInputs = [pkg-config];
-      buildInputs = [
-        xorg.libX11
-        xorg.libXft
-        harfbuzz
-      ];
-      buildPhase = ''
-        make
-      '';
-      installPhase = ''
-        mkdir -p $out/bin
-        cp st $out/bin/
-      '';
-    })
   ];
 
   networking.firewall.enable = true;

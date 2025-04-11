@@ -61,6 +61,17 @@ in {
     variant = "";
   };
 
+  services.cron = {
+    enable = true;
+    package = pkgs.cronie;
+    extraCronJobs = ''
+      @reboot /home/ulong/scripts/dwm-startup.sh
+      @reboot /home/ulong/scripts/dwm-bar.sh
+      @reboot sik -index /home/ulong/personal/notes
+      @reboot sik -b
+    '';
+  };
+
   virtualisation.docker.enable = false;
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
@@ -68,7 +79,8 @@ in {
   users.users.ulong = {
     isNormalUser = true;
     description = "ulong";
-    extraGroups = ["networkmanager" "wheel" "libvirtd" "docker"];
+    # add docker here
+    extraGroups = ["networkmanager" "wheel" "libvirtd"];
     packages = with pkgs; [];
   };
 
@@ -85,17 +97,6 @@ in {
     windowManager.dwm = {
       enable = true;
       package = myDwm;
-      extraSessionCommands = ''
-        brightnessctl s 70
-        setxkbmap -option caps:escape
-        nm-applet &
-        feh --bg-fill "$HOME/personal/nixe/config/wall.jpg" &
-        "$HOME/personal/nixe/config/scripts/dwm-bar.sh" &
-
-        xset s 600 600
-        xset dpms 0 0 900
-        xss-lock --transfer-sleep-lock -- "slock && sleep 5 && xset dpms force off && systemctl suspend" &
-      '';
     };
 
     windowManager.i3 = {

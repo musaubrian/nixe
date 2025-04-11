@@ -4,9 +4,7 @@ while true; do
     time=$(date '+%Y-%m-%d %T')
 
     battery_info=$(acpi -b)
-
     battery_percentage=$(echo "$battery_info" | grep -oP '\d+(?=%)')
-
     battery_status=$(echo "$battery_info" | grep -oP '(Discharging|Charging)')
 
     if [[ "$battery_status" == "Discharging" ]]; then
@@ -17,7 +15,7 @@ while true; do
         status="$battery_percentage%"
     fi
 
-    if [[ -n "$iface" && "$(cat /sys/class/net/$iface/operstate)" == "up" ]]; then
+    if ping -c 1 -W 1 8.8.8.8 >/dev/null 2>&1; then
         net_status="Online"
     else
         net_status="Offline"

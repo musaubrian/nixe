@@ -77,11 +77,26 @@ in {
 
   environment.pathsToLink = ["/libexec"];
 
-  services.displayManager.defaultSession = "dwm";
+  services.displayManager.defaultSession = "none+dwm";
   services.xserver = {
     enable = true;
     displayManager.lightdm.enable = true;
     desktopManager.xterm.enable = false;
+    windowManager.dwm = {
+      enable = true;
+      package = myDwm;
+      extraSessionCommands = ''
+        brightnessctl s 70
+        setxkbmap -option caps:escape
+        nm-applet &
+        feh --bg-fill "$HOME/personal/nixe/config/wall.jpg" &
+        "$HOME/personal/nixe/config/scripts/dwm-bar.sh" &
+
+        xset s 600 600
+        xset dpms 0 0 900
+        xss-lock --transfer-sleep-lock -- "slock && sleep 5 && xset dpms force off && systemctl suspend" &
+      '';
+    };
 
     windowManager.i3 = {
       enable = true;
@@ -89,9 +104,9 @@ in {
     };
   };
 
-  environment.etc."X11/sessions/dwm.desktop".text = ''
+  environment.etc."share/xsessions/dwm.desktop".text = ''
     [Desktop Entry]
-    Name=Custom DWM
+    Name=dwm
     Comment=Lightweight window manager
     Exec=${myDwm}/bin/dwm
     Type=Application

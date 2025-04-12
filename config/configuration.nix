@@ -9,7 +9,7 @@
     name = "dwm";
     src = fetchgit {
       url = "https://github.com/musaubrian/dwm";
-      sha256 = "sha256-Y5HbGCerdqO3Mbv7LSkrJQpUxOtePos3SO28w9c85U4=";
+      sha256 = "sha256-4FrARIUf6JsMrLB2HjN+Erxooxq09jDCiL08Gw4j8lU=";
     };
     nativeBuildInputs = [pkg-config];
     buildInputs = [
@@ -61,17 +61,6 @@ in {
     variant = "";
   };
 
-  services.cron = {
-    enable = true;
-    package = pkgs.cronie;
-    extraCronJobs = ''
-      @reboot /home/ulong/scripts/dwm-startup.sh
-      @reboot /home/ulong/scripts/dwm-bar.sh
-      @reboot sik -index /home/ulong/personal/notes
-      @reboot sik -b
-    '';
-  };
-
   virtualisation.docker.enable = false;
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
@@ -97,11 +86,6 @@ in {
     windowManager.dwm = {
       enable = true;
       package = myDwm;
-    };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [dmenu i3status i3lock];
     };
   };
 
@@ -171,10 +155,6 @@ in {
     {
       from = 8000;
       to = 9000;
-    }
-    {
-      from = 21000;
-      to = 23000;
     }
   ];
 

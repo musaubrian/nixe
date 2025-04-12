@@ -140,6 +140,7 @@ in {
     acpi
     home-manager
     chromium
+    ansible
   ];
 
   networking.firewall.enable = true;

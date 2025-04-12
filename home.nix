@@ -74,7 +74,6 @@
     nodejs_22
 
     mpv
-    ansible
     telegram-desktop
     android-studio
     zathura

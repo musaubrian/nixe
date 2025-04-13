@@ -38,6 +38,7 @@
     tmux
     ffmpeg
     smartmontools
+    syncthing
 
     fzf
     fastfetch

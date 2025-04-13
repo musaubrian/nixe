@@ -153,9 +153,14 @@ in {
       from = 3000;
       to = 3500;
     }
+    # Syncthing related
     {
       from = 8000;
       to = 9000;
+    }
+    {
+      from = 21000;
+      to = 23000;
     }
   ];
 

@@ -37,6 +37,7 @@
     ripgrep
     tmux
     ffmpeg
+    smartmontools
 
     fzf
     fastfetch

@@ -13,10 +13,10 @@ manage_stash() {
     git clone git@github.com:musaubrian/stash ~/personal/stash --depth=1
     pushd ~/personal/stash
 
-    ansible-vault decrypt ./stash/db/* ./stash/wakatime/*
-    cp ./stash/db/* ~/.db/ -v
-    cp ./stash/wakatime/wakatime.cfg ~/.wakatime.cfg -v
-    ansible-vault encrypt ./stash/db/* ./stash/wakatime/*
+    ansible-vault decrypt ./db/* ./wakatime/*
+    cp ./db/* ~/.db/ -v
+    cp ./wakatime/wakatime.cfg ~/.wakatime.cfg -v
+    ansible-vault encrypt ./db/* ./wakatime/*
 
     popd
 }

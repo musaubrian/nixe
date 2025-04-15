@@ -46,10 +46,7 @@ in {
   imports = [/etc/nixos/hardware-configuration.nix];
 
   boot.loader.grub.enable = false;
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
+  boot.loader.systemd-boot.enable = true;
   # boot.loader.grub.device = "/dev/sda";
   # boot.loader.grub.useOSProber = true;
 

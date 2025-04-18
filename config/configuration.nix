@@ -9,7 +9,7 @@
     name = "dwm";
     src = fetchgit {
       url = "https://github.com/musaubrian/dwm";
-      sha256 = "sha256-4FrARIUf6JsMrLB2HjN+Erxooxq09jDCiL08Gw4j8lU=";
+      sha256 = "sha256-HVZ3CpsZpH1P35NJTGI2GsPABALy9uI9z/N/FnUQLeI=";
     };
     nativeBuildInputs = [pkg-config];
     buildInputs = [

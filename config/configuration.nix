@@ -66,12 +66,14 @@ in {
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
+  programs.fish.enable = true;
   users.users.ulong = {
     isNormalUser = true;
     description = "ulong";
     # add docker here
     extraGroups = ["networkmanager" "wheel" "libvirtd"];
     packages = with pkgs; [];
+    shell = pkgs.fish;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -131,7 +133,7 @@ in {
     mySt
     xorg.xset
     xss-lock
-    slock
+    i3lock
     sshfs
     xclip
     xsel

@@ -8,4 +8,4 @@ feh --bg-fill "$HOME/personal/nixe/config/wall.jpg" &
 
 xset s 600 600
 xset dpms 0 0 900
-xss-lock --transfer-sleep-lock -- "slock && sleep 5 && xset dpms force off && systemctl suspend" &
+xss-lock --transfer-sleep-lock -- "i3lock --nofork--color=#171717 && sleep 5 && xset dpms force off && systemctl suspend" &

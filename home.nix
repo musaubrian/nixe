@@ -104,7 +104,7 @@
     ".bash_completions".source = ./config/.bash_completions;
     "scripts".source = ./config/scripts;
     ".config/nvim".source = ./config/nvim;
-    ".config/i3".source = ./config/i3;
+    # ".config/i3".source = ./config/i3;
     ".config/rofi".source = ./config/rofi;
   };
 

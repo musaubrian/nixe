@@ -39,6 +39,7 @@
     ffmpeg
     smartmontools
     syncthing
+    postman
 
     fzf
     fastfetch
@@ -91,6 +92,7 @@
     builtins.elem (pkgs.lib.getName pkg) [
       "android-studio-stable"
       "httpie-desktop"
+      "postman"
     ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

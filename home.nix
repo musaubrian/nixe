@@ -83,6 +83,8 @@
     libreoffice
     httpie-desktop
     qemu
+    virt-manager
+    spice-gtk
     arduino-ide
     kdePackages.kdenlive
     obs-studio

@@ -27,6 +27,7 @@ return {
         blade = { "blade-formatter" },
         php = { "pint" },
         rust = { "rustfmt" },
+        typst = { "typstyle" },
       },
     },
   },

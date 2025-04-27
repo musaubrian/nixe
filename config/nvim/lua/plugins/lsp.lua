@@ -24,8 +24,13 @@ return {
       tailwindcss = {},
       rust_analyzer = {},
       nil_ls = {},
+      tinymist = {
+        settings = {
+          semanticTokens = "disable",
+        },
+      },
       volar = {
-        filetypes = { "vue", "javascript", "json" },
+        filetypes = { "vue", "json" },
         init_options = {
           vue = {
             hybridMode = false,

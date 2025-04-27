@@ -37,9 +37,7 @@
     ripgrep
     tmux
     ffmpeg
-    smartmontools
     syncthing
-    postman
 
     fzf
     fastfetch
@@ -63,6 +61,7 @@
     typescript-language-server
     tailwindcss-language-server
     blade-formatter
+    tinymist
 
     prettierd
     stylua

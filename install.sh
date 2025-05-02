@@ -54,5 +54,4 @@ main() {
     git remote add origin git@github.com:musaubrian/nixe
 }
 
-# main
-manage_syms
+main

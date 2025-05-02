@@ -20,8 +20,6 @@ alias ll='ls -lh'
 alias ls='ls --color=tty'
 alias lsa='ls -lah'
 alias md='mkdir -p'
-alias wf="~/scripts/wf.sh"
-alias bx='bunx'
 alias reload='source ~/.profile && clear'
 alias f="~/scripts/f.sh"
 alias ns="~/scripts/nix-shell.sh"
@@ -30,7 +28,6 @@ alias ffmchop="~/scripts/ffmchop.sh"
 alias journal="~/scripts/jt.sh"
 alias jot="~/scripts/jot.sh"
 alias h264="~/scripts/h264Convert"
-alias gt="git"
 alias gg="python3 ~/scripts/gg.py"
 alias glow="glow -s 'notty'"
 alias startd="~/scripts/dwm-startup.sh"

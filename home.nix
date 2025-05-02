@@ -62,6 +62,7 @@
     tailwindcss-language-server
     blade-formatter
     tinymist
+    typst
 
     prettierd
     stylua
@@ -83,7 +84,6 @@
     httpie-desktop
     qemu
     virt-manager
-    spice-gtk
     arduino-ide
     kdePackages.kdenlive
     obs-studio
@@ -93,23 +93,7 @@
     builtins.elem (pkgs.lib.getName pkg) [
       "android-studio-stable"
       "httpie-desktop"
-      "postman"
     ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    ".aliases".source = ./config/.aliases;
-    ".gitconfig".source = ./config/.gitconfig;
-    ".tmux.conf".source = ./config/.tmux.conf;
-    ".profile".source = ./config/.profile;
-    ".bashrc".source = ./config/.bashrc;
-    ".bash_completions".source = ./config/.bash_completions;
-    "scripts".source = ./config/scripts;
-    ".config/nvim".source = ./config/nvim;
-    # ".config/i3".source = ./config/i3;
-    ".config/rofi".source = ./config/rofi;
-  };
 
   home.sessionVariables = {
     EDITOR = "nvim";

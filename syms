@@ -1,0 +1,11 @@
+# Destination              Source
+# ---------------------
+$HOME/.aliases          = ./config/.aliases
+$HOME/.gitconfig        = ./config/.gitconfig
+$HOME/.tmux.conf        = ./config/.tmux.conf
+$HOME/.profile          = ./config/.profile
+$HOME/.bashrc           = ./config/.bashrc
+$HOME/.bash_completions = ./config/.bash_completions
+$HOME/scripts           = ./config/scripts
+$HOME/.config/nvim      = ./config/nvim
+$HOME/.config/rofi      = ./config/rofi

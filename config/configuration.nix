@@ -47,8 +47,6 @@ in {
 
   boot.loader.grub.enable = false;
   boot.loader.systemd-boot.enable = true;
-  # boot.loader.grub.device = "/dev/sda";
-  # boot.loader.grub.useOSProber = true;
 
   networking.hostName = "sminx";
   networking.networkmanager.enable = true;
@@ -66,14 +64,12 @@ in {
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  programs.fish.enable = true;
   users.users.ulong = {
     isNormalUser = true;
     description = "ulong";
     # add docker here
     extraGroups = ["networkmanager" "wheel" "libvirtd"];
     packages = with pkgs; [];
-    shell = pkgs.fish;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -144,6 +140,7 @@ in {
     home-manager
     chromium
     ansible
+    spice-gtk # vm "passthrough"
   ];
 
   networking.firewall.enable = true;

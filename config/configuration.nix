@@ -2,48 +2,48 @@
   config,
   pkgs,
   ...
-}: let
-  inherit (pkgs) stdenv fetchgit pkg-config xorg;
-
-  myDwm = stdenv.mkDerivation {
-    name = "dwm";
-    src = fetchgit {
-      url = "https://github.com/musaubrian/dwm";
-      sha256 = "sha256-HVZ3CpsZpH1P35NJTGI2GsPABALy9uI9z/N/FnUQLeI=";
-    };
-    nativeBuildInputs = [pkg-config];
-    buildInputs = [
-      xorg.libX11
-      xorg.libXft
-      xorg.libXinerama
-    ];
-    buildPhase = "make";
-    installPhase = ''
-      mkdir -p $out/bin
-      cp dwm $out/bin/
-    '';
-  };
-
-  mySt = stdenv.mkDerivation {
-    name = "st";
-    src = fetchgit {
-      url = "https://github.com/musaubrian/st";
-      sha256 = "sha256-NTevI4NJFMbKZAZ6DEjg7k0fmGdFTsn5WPtksNf4tZg=";
-    };
-    nativeBuildInputs = [pkg-config];
-    buildInputs = [
-      xorg.libX11
-      xorg.libXft
-      pkgs.harfbuzz
-    ];
-    buildPhase = "make";
-    installPhase = ''
-      mkdir -p $out/bin
-      cp st $out/bin/
-    '';
-  };
-in {
+}: {
   imports = [/etc/nixos/hardware-configuration.nix];
+  nixpkgs.overlays = [
+    (final: prev: {
+      st = prev.stdenv.mkDerivation {
+        name = "st";
+        src = prev.fetchgit {
+          url = "https://github.com/musaubrian/st";
+          sha256 = "sha256-NTevI4NJFMbKZAZ6DEjg7k0fmGdFTsn5WPtksNf4tZg=";
+        };
+        nativeBuildInputs = [prev.pkg-config];
+        buildInputs = with prev; [
+          xorg.libX11
+          xorg.libXft
+          pkgs.harfbuzz
+        ];
+        buildPhase = "make";
+        installPhase = ''
+          mkdir -p $out/bin
+          cp st $out/bin/
+        '';
+      };
+      dwm = prev.stdenv.mkDerivation {
+        name = "dwm";
+        src = prev.fetchgit {
+          url = "https://github.com/musaubrian/dwm";
+          sha256 = "sha256-HVZ3CpsZpH1P35NJTGI2GsPABALy9uI9z/N/FnUQLeI=";
+        };
+        nativeBuildInputs = [prev.pkg-config];
+        buildInputs = with prev; [
+          xorg.libX11
+          xorg.libXft
+          xorg.libXinerama
+        ];
+        buildPhase = "make";
+        installPhase = ''
+          mkdir -p $out/bin
+          cp dwm $out/bin/
+        '';
+      };
+    })
+  ];
 
   boot.loader.grub.enable = false;
   boot.loader.systemd-boot.enable = true;
@@ -82,17 +82,14 @@ in {
     enable = true;
     displayManager.lightdm.enable = true;
     desktopManager.xterm.enable = false;
-    windowManager.dwm = {
-      enable = true;
-      package = myDwm;
-    };
+    windowManager.dwm.enable = true;
   };
 
   environment.etc."share/xsessions/dwm.desktop".text = ''
     [Desktop Entry]
     Name=dwm
     Comment=Lightweight window manager
-    Exec=${myDwm}/bin/dwm
+    Exec=${pkgs.dwm}/bin/dwm
     Type=Application
   '';
 
@@ -125,8 +122,8 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
-    myDwm
-    mySt
+    dwm
+    st
     xorg.xset
     xss-lock
     i3lock

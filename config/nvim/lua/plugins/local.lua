@@ -13,10 +13,10 @@ return {
   --     base_venv = "~/personal/.base_venv",
   --   },
   -- },
-  -- {
-  --   dir = "~/personal/jade.nvim",
-  --   lazy = false,
-  --   dependencies = "tjdevries/colorbuddy.nvim",
-  --   opts = { no_bg = true },
-  -- },
+  {
+    dir = "~/personal/jade.nvim",
+    lazy = false,
+    dependencies = "tjdevries/colorbuddy.nvim",
+    opts = {},
+  },
 }

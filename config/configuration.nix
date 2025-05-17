@@ -61,6 +61,11 @@
   };
 
   virtualisation.docker.enable = false;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
@@ -72,6 +77,7 @@
     packages = with pkgs; [];
   };
 
+  programs.nix-ld.enable = true;
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -122,6 +128,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    distrobox
     dwm
     st
     xorg.xset

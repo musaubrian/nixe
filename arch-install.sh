@@ -6,15 +6,16 @@ AUR_HELPER=yay
 install_packages() {
     echo "Installing packages..."
     sudo pacman -S --needed --noconfirm \
-    base-devel networkmanager ansible acpi bluez bluez-utils pavucontrol brightnessctl \
+    base-devel networkmanager ansible acpi bluez bluez-utils blueman pavucontrol brightnessctl \
+    xorg-xsetroot network-manager-applet \
     git wget gcc make sqlite unzip tree jq tmux ffmpeg fzf fastfetch yt-dlp \
     hugo neovim btop ripgrep git-delta glow \
     xorg-server xorg-xinit libx11 libxft libxinerama \
     firefox xclip xsel i3lock syncthing rofi feh flameshot zathura \
     libreoffice-fresh telegram-desktop mpv sshfs \
-    nodejs npm go php composer \
+    nodejs npm go php \
     prettier stylua lua-language-server python-lsp-server typescript-language-server \
-    noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttc-iosevka
+    noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttc-iosevka gnu-free-fonts
 }
 
 # Function to compile and install dwm and st from source
@@ -83,7 +84,6 @@ fi
 echo "X session configured successfully!"
 }
 
-# Configure SSH keys - KEEPING EXACTLY AS ORIGINAL
 manage_keys() {
     mkdir -p ~/.ssh
     ansible-vault decrypt ./keys/*
@@ -156,13 +156,8 @@ install_aur_packages() {
 
     echo "Installing packages from AUR..."
     $AUR_HELPER -S --needed --noconfirm \
-        nwg-look \
-        pnpm \
-        uv \
-        tailwindcss-language-server \
-        nil \
-        marksman \
-        gopls
+        nwg-look pnpm tailwindcss-language-server \
+        nil marksman gopls
     # httpie-desktop \
 
     echo "AUR packages installed successfully!"
@@ -176,9 +171,9 @@ setup_git_repo() {
 }
 
 install_filemanager() {
-    echo "Installing PCManFM and mounting support..."
+    echo "Installing filemanager and mounting support..."
     sudo pacman -S --needed --noconfirm \
-        pcmanfm \
+        thunar \
         gvfs \
         gvfs-smb \
         gvfs-afc \
@@ -186,8 +181,23 @@ install_filemanager() {
         gvfs-nfs \
         gvfs-goa \
         gvfs-gphoto2 \
-        sshfs
-    echo "PCManFM installed!"
+        sshfs \
+        thunar-archive-plugin \
+        thunar-volman
+    echo "Filemanager installed!"
+}
+
+setup_touchpad() {
+    cat << EOF > /etc/X11/xorg.conf.d/home/90-touchpad.conf
+ Section "InputClass"
+         Identifier "touchpad"
+         MatchIsTouchpad "on"
+         Driver "libinput"
+         Option "Tapping" "on"
+ 	Option "NaturalScrolling" "on"
+ 	Option "ScrollMethod" "twofinger"
+ EndSection
+EOF
 }
 
 # Main function
@@ -209,9 +219,9 @@ main() {
     manage_syms
 
     setup_git_repo
+    setup_touchpad
 
     echo "Arch Linux setup completed successfully!"
-    echo "You can now reboot and start your system with 'startx'"
 }
 
 main

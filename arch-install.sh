@@ -188,15 +188,15 @@ install_filemanager() {
 }
 
 setup_touchpad() {
-    cat << EOF > /etc/X11/xorg.conf.d/home/90-touchpad.conf
- Section "InputClass"
-         Identifier "touchpad"
-         MatchIsTouchpad "on"
-         Driver "libinput"
-         Option "Tapping" "on"
- 	Option "NaturalScrolling" "on"
- 	Option "ScrollMethod" "twofinger"
- EndSection
+    cat << EOF | sudo tee /etc/X11/xorg.conf.d/90-touchpad.conf > /dev/null
+Section "InputClass"
+    Identifier "touchpad"
+    MatchIsTouchpad "on"
+    Driver "libinput"
+    Option "Tapping" "on"
+    Option "NaturalScrolling" "off"
+    Option "ScrollMethod" "twofinger"
+EndSection
 EOF
 }
 
@@ -223,5 +223,5 @@ main() {
 
     echo "Arch Linux setup completed successfully!"
 }
+setup_touchpad
 
-main

@@ -161,3 +161,4 @@ bind -x '"\ed":sessions'
 
 
 python3 ~/scripts/gg.py -lst
+. "$HOME/.cargo/env"

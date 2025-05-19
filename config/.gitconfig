@@ -18,8 +18,11 @@
 [alias]
 	lg = log --oneline --graph --decorate
 	rem = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
-
 	conflicts = !git ls-files -u | cut -f 2 | sort -u
+	track-all = "!git branch -r | grep -v '\\->' | while read remote; do local=${remote#origin/}; git show-ref --verify --quiet refs/heads/$local || git branch --track $local $remote; done"
+
+[remote "origin"]
+    fetch = +refs/heads/*:refs/remotes/origin/*
 
 [pull]
 	rebase = true

@@ -74,6 +74,11 @@ if [ ! -f ~/.xinitrc ]; then
 # Load X resources
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 
+blueman-applet &
+
+# Start polkit agent
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
 ~/scripts/dwm-startup.sh &
 
 exec dwm
@@ -119,20 +124,6 @@ manage_syms() {
 
         ln -sv $(realpath $src) $expanded_dest
     done < ./syms
-}
-
-configure_bluetooth() {
-    echo "Configuring Bluetooth..."
-    sudo systemctl enable bluetooth
-    sudo systemctl start bluetooth
-
-    # Configure Bluetooth to enable media devices
-    sudo mkdir -p /etc/bluetooth/
-    cat << EOF | sudo tee /etc/bluetooth/main.conf
-[General]
-Enable=Source,Sink,Media,Socket
-EOF
-echo "Bluetooth configured!"
 }
 
 configure_system() {
@@ -212,7 +203,6 @@ main() {
 
     configure_system
     configure_x
-    configure_bluetooth
 
     manage_keys
     manage_stash

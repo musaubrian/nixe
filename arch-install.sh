@@ -74,6 +74,7 @@ if [ ! -f ~/.xinitrc ]; then
 # Load X resources
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 
+dunst &
 blueman-applet &
 
 # Start polkit agent

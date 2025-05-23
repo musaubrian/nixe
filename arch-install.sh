@@ -6,7 +6,7 @@ AUR_HELPER=yay
 install_packages() {
     echo "Installing packages..."
     sudo pacman -S --needed --noconfirm \
-    base-devel networkmanager ansible acpi bluez bluez-utils blueman pavucontrol brightnessctl \
+    base-devel networkmanager ansible acpi bluez bluez-utils blueman pavucontrol brightnessctl dunst \
     xorg-xsetroot network-manager-applet \
     git wget gcc make sqlite unzip tree jq tmux ffmpeg fzf fastfetch yt-dlp \
     hugo neovim btop ripgrep git-delta glow \

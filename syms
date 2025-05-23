@@ -9,3 +9,4 @@ $HOME/.bash_completions = ./config/.bash_completions
 $HOME/scripts           = ./config/scripts
 $HOME/.config/nvim      = ./config/nvim
 $HOME/.config/rofi      = ./config/rofi
+$HOME/.config/dunst     = ./config/dunst

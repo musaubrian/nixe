@@ -1,6 +1,7 @@
 require "custom.user"
 require "custom.opts"
 require "custom.keys"
+require "custom.snips"
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })

@@ -13,7 +13,11 @@ Date: $readable_date
 TODAY_JOURNAL="$HOME/personal/notes/journal/$today.md"
 
 if [[ -f "$TODAY_JOURNAL" ]]; then
-    nvim "$TODAY_JOURNAL"
+    echo """
+======================================
+
+    """ >> "$TODAY_JOURNAL"
+    nvim +":normal Gzt" "$TODAY_JOURNAL"
 else
     echo "$boilerplate" > "$TODAY_JOURNAL"
     nvim "$TODAY_JOURNAL" +5

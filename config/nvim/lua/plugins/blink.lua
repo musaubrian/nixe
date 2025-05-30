@@ -15,8 +15,6 @@ return {
       ["<A-CR>"] = { "select_and_accept" },
     },
 
-    -- snippets = { preset = "luasnip" },
-
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
       providers = {

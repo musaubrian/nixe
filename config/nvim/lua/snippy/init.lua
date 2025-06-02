@@ -13,7 +13,7 @@
 --- @field opts Opts
 local M = {
   snip_store = {},
-  opts = { name = "personal-snippets" },
+  opts = { name = "snippy-gen" },
 }
 
 --- Create a new snippet
@@ -31,15 +31,6 @@ end
 function M.setup(opts)
   M.snip_store = {}
   M.opts = opts or M.opts
-end
-
-function M.print_snips()
-  for lang, snippets in pairs(M.snip_store) do
-    print("Lang: ", lang)
-    for _, snippet in ipairs(snippets) do
-      print(snippet.trig .. " desc \n" .. snippet.desc)
-    end
-  end
 end
 
 local function escape_quotes(s)
@@ -105,25 +96,25 @@ local function create_package_json(base_path)
   file:write(pkg_contents)
 end
 
-function M.create_snippet_files()
+--- @param store SnipStore
+local function create_snippet_files(store)
   local snippets_location = vim.fn.stdpath "config" .. "/snippets"
 
-  for lang, snippet in pairs(M.snip_store) do
+  for lang, snippet in pairs(store) do
     write_snip_file(snippets_location .. "/" .. lang .. ".json", snippet)
   end
 
   create_package_json(snippets_location)
-
-  vim.notify("Snippets Generated", vim.log.levels.INFO)
 end
 
 vim.api.nvim_create_user_command("GenSnippets", function()
   if next(M.snip_store) == nil then
-    vim.notify("No snippets found, aborting", vim.log.levels.WARN)
+    vim.notify("[WARN] No snippets found, skipping", vim.log.levels.WARN)
     return
   end
 
-  M.create_snippet_files()
+  create_snippet_files(M.snip_store)
+  vim.notify("[SUCCESS] Snippets generated", vim.log.levels.INFO)
 end, {})
 
 return M

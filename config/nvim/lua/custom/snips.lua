@@ -1,4 +1,4 @@
-local s = require "snips"
+local s = require "snippy.init"
 
 s.add {
   go = {
@@ -33,7 +33,7 @@ s.add {
     {
       trig = "res2",
       desc = "200 result express",
-      body = "return res.status(200).json({message: '${1}', ${2}})",
+      body = 'return res.status(200).json({message: "${1}", ${2}})',
     },
     {
       trig = "fba",

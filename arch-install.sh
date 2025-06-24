@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-AUR_HELPER=yay
+AUR_HELPER="yay"
 
 install_packages() {
     echo "Installing packages..."
@@ -214,5 +214,5 @@ main() {
 
     echo "Arch Linux setup completed successfully!"
 }
-setup_touchpad
 
+setup_touchpad

@@ -13,6 +13,9 @@ vim.keymap.set("n", "<A-L>", "<Cmd>resize -5<CR>", { desc = "resize split upward
 --move highlighted blocks
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+--better indentation
+vim.keymap.set("v", "<", "<gv", { desc = "indent left" })
+vim.keymap.set("v", ">", ">gv", { desc = "indent right" })
 
 vim.keymap.set("n", "<right>", function()
   vim.notify("Use l to move", vim.log.levels.WARN)

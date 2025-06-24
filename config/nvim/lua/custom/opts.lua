@@ -26,4 +26,3 @@ vim.wo.signcolumn = "yes"
 vim.o.updatetime = 50
 vim.o.completeopt = "menuone,noselect"
 vim.o.termguicolors = true
-vim.o.background = "light"

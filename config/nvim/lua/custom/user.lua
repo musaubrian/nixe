@@ -34,6 +34,21 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
   end,
 })
 
+vim.api.nvim_create_user_command("GenId", function()
+  local ok, uuid = pcall(vim.fn.system, "uuidgen")
+  if not ok then
+    vim.notify("Failed to gen uuid", vim.log.levels.ERROR)
+  end
+
+  -- .*%- matches everything up to the last -
+  -- (.+)$ captures what's after it (the last segment)
+  local short = uuid:match(".*%-(.+)$"):gsub("\n", "")
+  if short then
+    vim.fn.setreg("+", short, "c")
+    vim.notify "ID copied to clipboard"
+  end
+end, { desc = "Generate an id" })
+
 vim.api.nvim_create_autocmd({ "TermClose" }, {
   group = me_group,
   pattern = "*",

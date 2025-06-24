@@ -15,6 +15,7 @@ return {
   },
   opts = {
     servers = {
+      zls = {},
       lua_ls = {},
       gopls = {},
       pylsp = {},
@@ -30,7 +31,7 @@ return {
         },
       },
       volar = {
-        filetypes = { "vue", "json" },
+        filetypes = { "vue" },
         init_options = {
           vue = {
             hybridMode = false,

@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
-pushd ~/Downloads/
+downloads="$1"
+url="$2"
 
-wget "$1"
 
-popd
+if [ "$downloads" == "-d" ]; then
+    pushd ~/Downloads/
+    wget "$url"
+    popd
+else
+    wget "$1"
+fi

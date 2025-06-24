@@ -31,6 +31,11 @@ s.add {
       body = "return res.status(500).json({message: '${1}'})",
     },
     {
+      trig = "res4",
+      desc = "400 result express",
+      body = "return res.status(400).json({message: '[BAD REQUEST]: ${1}'})",
+    },
+    {
       trig = "res2",
       desc = "200 result express",
       body = 'return res.status(200).json({message: "${1}", ${2}})',
@@ -40,7 +45,7 @@ s.add {
       desc = "initialize firebase admin and db",
       body = {
         'const firebaseAdmin = require("firebase-admin")',
-        "const db = await firebaseAdmin.firestore()",
+        "const db = firebaseAdmin.firestore()",
       },
     },
   },

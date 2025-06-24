@@ -20,7 +20,7 @@ return {
     "musaubrian/pye.nvim",
     event = "BufEnter",
     opts = {
-      base_venv = "~/personal/.base_venv",
+      base_venv = "~/.base_vnv",
     },
   },
   { "stevearc/dressing.nvim", event = "BufEnter", opts = {} },

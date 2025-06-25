@@ -84,11 +84,31 @@ end, {})
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
   callback = function(event)
-    -- does this work without blink, will see
     local client = vim.lsp.get_client_by_id(event.data.client_id)
-    if client and client:supports_method "textDocument/completion" then
+    if client == nil then
+      return
+    end
+
+    if client:supports_method "textDocument/completion" then
       vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = false })
     end
+
+    vim.api.nvim_create_user_command("LspInfo", function()
+      vim.cmd "checkhealth vim.lsp"
+    end, {})
+
+    vim.api.nvim_create_user_command("LspRestart", function()
+      vim.lsp.stop_client(event.data.client_id)
+      vim.lsp.start(client.config, {})
+    end, {})
+
+    vim.api.nvim_create_user_command("LspStop", function()
+      vim.lsp.stop_client(event.data.client_id)
+    end, {})
+
+    vim.api.nvim_create_user_command("LspStart", function()
+      vim.lsp.start(client.config, {})
+    end, {})
 
     local nmap = function(keys, func, desc)
       if desc then

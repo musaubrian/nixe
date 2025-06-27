@@ -1,7 +1,10 @@
 return {
-  init_options = { hostInfo = "neovim" },
+  init_options = {
+    hostInfo = "neovim",
+  },
   cmd = { "typescript-language-server", "--stdio" },
   filetypes = {
+    "vue",
     "javascript",
     "javascriptreact",
     "javascript.jsx",
@@ -10,7 +13,9 @@ return {
     "typescript.tsx",
   },
   root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+
   server_capabilities = { documentFormattingProvider = false },
+
   handlers = {
     -- handle rename request for certain code actions like extracting functions / types
     ["_typescript.rename"] = function(_, result, ctx)
@@ -27,6 +32,7 @@ return {
       return vim.NIL
     end,
   },
+
   on_attach = function(client, bufnr)
     -- ts_ls provides `source.*` code actions that apply to the whole file. These only appear in
     -- `vim.lsp.buf.code_action()` if specified in `context.only`.

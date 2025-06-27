@@ -11,3 +11,6 @@ $HOME/.config/nvim          = ./config/nvim
 $HOME/.config/rofi          = ./config/rofi
 $HOME/.config/dunst         = ./config/dunst
 $HOME/.config/starship.toml = ./config/starship.toml
+$HOME/.config/hypr          = ./config/hypr
+$HOME/.config/waybar        = ./config/waybar
+$HOME/.config/foot          = ./config/foot

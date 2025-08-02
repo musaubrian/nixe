@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 
-brightnessctl s 70
-setxkbmap -option caps:escape
-nm-applet &
 feh --bg-fill "$HOME/personal/nixe/config/wall.jpg" &
 "$HOME/personal/nixe/config/scripts/dwm-bar.sh" &
-
-sik -b&
 
 xset s 600 600
 xset dpms 0 0 900

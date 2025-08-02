@@ -1,6 +1,5 @@
 alias cleand="~/scripts/cleand.sh"
 alias tmx="~/scripts/tmx.sh"
-alias nv="nvim"
 alias vim="nvim"
 alias p="cd ~/personal/"
 alias w="cd ~/work/"

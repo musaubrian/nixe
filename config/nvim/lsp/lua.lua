@@ -19,7 +19,7 @@ return {
         version = "LuaJIT",
       },
       diagnostics = {
-        globals = { "vim" }, -- <- this is the key
+        globals = { "vim" },
       },
       workspace = {
         checkThirdParty = false,

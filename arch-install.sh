@@ -7,14 +7,14 @@ install_packages() {
     echo "Installing packages..."
     sudo pacman -S --needed --noconfirm \
     base-devel networkmanager ansible acpi bluez bluez-utils blueman pavucontrol brightnessctl dunst \
-    xorg-xsetroot network-manager-applet \
-    git wget gcc make sqlite unzip tree jq tmux ffmpeg fzf fastfetch yt-dlp \
-    hugo neovim btop ripgrep git-delta glow \
+    xorg-xsetroot network-manager-applet polkit-gnome \
+    git wget gcc make sqlite unzip tree jq tmux ffmpeg fzf yt-dlp \
+    hugo neovim btop ripgrep git-delta man-pages man-db less\
     xorg-server xorg-xinit libx11 libxft libxinerama \
     firefox xclip xsel i3lock syncthing rofi feh flameshot zathura \
     libreoffice-fresh telegram-desktop mpv sshfs \
     nodejs npm go php \
-    prettier stylua lua-language-server python-lsp-server typescript-language-server \
+    stylua lua-language-server python-lsp-server typescript-language-server \
     noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttc-iosevka gnu-free-fonts
 }
 
@@ -131,6 +131,7 @@ configure_system() {
     echo "Enabling services..."
     sudo systemctl enable NetworkManager
     sudo systemctl enable sshd
+    sudo systemctl enable bluetooth.service
 }
 
 install_aur_packages() {
@@ -150,7 +151,6 @@ install_aur_packages() {
     $AUR_HELPER -S --needed --noconfirm \
         nwg-look pnpm tailwindcss-language-server \
         nil marksman gopls
-    # httpie-desktop \
 
     echo "AUR packages installed successfully!"
 }
@@ -215,4 +215,5 @@ main() {
     echo "Arch Linux setup completed successfully!"
 }
 
-setup_touchpad
+main
+

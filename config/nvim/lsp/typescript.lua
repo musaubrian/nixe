@@ -4,7 +4,6 @@ return {
   },
   cmd = { "typescript-language-server", "--stdio" },
   filetypes = {
-    "vue",
     "javascript",
     "javascriptreact",
     "javascript.jsx",

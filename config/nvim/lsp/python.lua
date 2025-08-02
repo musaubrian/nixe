@@ -1,5 +1,6 @@
 return {
   cmd = { "pylsp" },
+
   filetypes = { "python" },
   root_markers = {
     "pyproject.toml",
@@ -8,5 +9,6 @@ return {
     "requirements.txt",
     "Pipfile",
     ".git",
+    "main.py",
   },
 }

@@ -16,6 +16,7 @@ return {
         javascript = { "prettierd" },
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },
+        svelte = { "prettierd" },
         json = { "prettierd" },
         jsonc = { "prettierd" },
         vue = { "prettierd" },

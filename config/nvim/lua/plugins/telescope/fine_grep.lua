@@ -58,7 +58,17 @@ local function fine_grep(opts)
 end
 M.setup = function(opts)
   vim.keymap.set("n", "<leader>fg", function()
-    fine_grep { file_ignore_patterns = { "node_modules/*", "public/*", "vendor/*", "storage/*", "*-lock*", "*.lock" } }
+    fine_grep {
+      file_ignore_patterns = {
+        "node_modules/*",
+        "public/*",
+        "vendor/*",
+        "storage/*",
+        "*-lock*",
+        "*.lock",
+        "*.env",
+      },
+    }
   end, { desc = "[F]ine [G]rep" })
 end
 return M

@@ -37,3 +37,6 @@ for name, type in vim.fs.dir(lsp_dir) do
 end
 
 vim.lsp.enable(clients)
+
+local typrev = require "custom.typrev"
+typrev.setup { previewCmd = "zathura" }

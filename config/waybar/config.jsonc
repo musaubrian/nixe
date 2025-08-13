@@ -27,7 +27,7 @@
   },
 
   "clock": {
-    "format": "{:%I:%M %p - %a, %d %b %Y}",
+    "format": "{:%H:%M - %a, %d %b}",
     "tooltip": false,
   },
 

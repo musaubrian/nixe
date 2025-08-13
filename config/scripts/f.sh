@@ -28,9 +28,12 @@ switch_or_attach(){
 if [[ -n "$SELECTED_DIR" ]]; then
     builtin cd "$HOME/$SELECTED_DIR"
 
-    SESSION=$(basename "$SELECTED_DIR" | tr '.' '_')
-    tmux new-session -d -s "$SESSION"
-    switch_or_attach "$SESSION"
+    # don't use tmux in kitty
+    if [[ "$TERM" != "xterm-kitty" ]]; then
+        SESSION=$(basename "$SELECTED_DIR" | tr '.' '_')
+        tmux new-session -d -s "$SESSION"
+        switch_or_attach "$SESSION"
+    fi
 else
     echo "[ERROR]: No directory selected"
 fi

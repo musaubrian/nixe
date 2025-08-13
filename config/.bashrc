@@ -74,6 +74,27 @@ xterm*|rxvt*)
     ;;
 esac
 
+
+# Show Git branch in prompt (no color)
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUPSTREAM="auto"
+
+# Git prompt support
+if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+    source /usr/share/git/completion/git-prompt.sh
+fi
+
+set_bash_prompt() {
+    local venv=""
+    if [ -n "$VIRTUAL_ENV" ]; then
+        venv="($(basename "$VIRTUAL_ENV")) "
+    fi
+    local git_branch="$(__git_ps1 ' (%s)')"
+    PS1="${debian_chroot:+($debian_chroot)}${venv}\w${git_branch}\n\$ "
+}
+
+PROMPT_COMMAND="set_bash_prompt"
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

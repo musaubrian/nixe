@@ -43,8 +43,8 @@ vim.api.nvim_create_user_command("Typ", function()
     end, 1000)
   end
 
-  print("Watching: " .. vim.fn.expand "%")
-end, {})
+  vim.notify("Watching: " .. vim.fn.expand "%", vim.log.levels.INFO)
+end, { desc = "Start previewing typst file" })
 
 vim.api.nvim_create_user_command("Styp", function()
   if M.typstJobId == nil and M.prevJobId == nil then
@@ -71,7 +71,7 @@ vim.api.nvim_create_user_command("Styp", function()
   end
 
   vim.notify "Stopped previewing"
-end, {})
+end, { desc = "Stop previewing typst file" })
 
 vim.keymap.set("n", "<leader>pr", "<cmd>:Typ<CR>", { desc = "Start typst previewer" })
 vim.keymap.set("n", "<leader>spr", "<cmd>:Styp<CR>", { desc = "Stop typst previewer" })

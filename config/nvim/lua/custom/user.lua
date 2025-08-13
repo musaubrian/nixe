@@ -124,6 +124,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
     nmap("<leader>rn", vim.lsp.buf.rename)
     nmap("<leader>ca", vim.lsp.buf.code_action)
+
     -- its kinda neat
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "signature help" })
   end,

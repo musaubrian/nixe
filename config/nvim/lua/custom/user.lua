@@ -64,6 +64,10 @@ vim.api.nvim_create_user_command("Term", function()
   vim.cmd "split |term"
 end, { desc = "Open terminal in split mode at the bottom" })
 
+vim.api.nvim_create_user_command("FTerm", function()
+  vim.cmd "term"
+end, { desc = "Open terminal in *full screen mode" })
+
 vim.diagnostic.config {
   virtual_text = false,
   virtual_lines = {

@@ -73,7 +73,4 @@ vim.api.nvim_create_user_command("Styp", function()
   vim.notify "Stopped previewing"
 end, { desc = "Stop previewing typst file" })
 
-vim.keymap.set("n", "<leader>pr", "<cmd>:Typ<CR>", { desc = "Start typst previewer" })
-vim.keymap.set("n", "<leader>spr", "<cmd>:Styp<CR>", { desc = "Stop typst previewer" })
-
 return M

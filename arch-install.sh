@@ -3,19 +3,47 @@ set -e
 
 AUR_HELPER="yay"
 
-install_packages() {
+usage() {
+    echo "Usage: $0 [OPTION]"
+    echo ""
+    echo "Options:"
+    echo "  x, x11,          Install X11/Xorg setup with dwm"
+    echo "  w, wayland       Install Wayland setup with Hyprland"
+    echo "  both             Install both X11 and Wayland (full setup)"
+    echo ""
+    echo "Examples:"
+    echo "  $0 wayland       # Install Wayland setup only"
+    echo "  $0 x11           # Install X11 setup only"
+    echo "  $0 both          # Install both setups"
+}
+
+install_base_packages() {
     echo "Installing packages..."
     sudo pacman -S --needed --noconfirm \
     base-devel networkmanager ansible acpi bluez bluez-utils blueman pavucontrol brightnessctl dunst \
-    xorg-xsetroot network-manager-applet polkit-gnome \
+    network-manager-applet\
     git wget gcc make sqlite unzip tree jq tmux ffmpeg fzf yt-dlp \
-    hugo neovim btop ripgrep git-delta man-pages man-db less\
-    xorg-server xorg-xinit libx11 libxft libxinerama \
-    firefox xclip xsel i3lock syncthing rofi feh flameshot zathura \
+    hugo neovim btop ripgrep difftastic man-pages man-db less\
+    firefox  syncthing rofi feh zathura zathura-pdf-poppler \
     libreoffice-fresh telegram-desktop mpv sshfs \
     nodejs npm go php \
-    stylua lua-language-server python-lsp-server typescript-language-server \
-    noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttc-iosevka gnu-free-fonts
+    stylua lua-language-server python-lsp-server typescript-language-server tinymist \
+    noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttc-iosevka ttf-jetbrains-mono gnu-free-fonts
+}
+
+install_x_packages() {
+    echo "Installing Xorg related packages..."
+    sudo pacman -S --needed --noconfirm \
+    xorg-xsetroot xorg-server xorg-xinit libx11 libxft libxinerama \
+    xclip xsel i3lock flameshot polkit-gnome
+}
+
+install_wayland_packages() {
+    echo "Installing wayland related packages..."
+    sudo pacman -S --needed --noconfirm \
+    hyprland hyprpaper hyprlock xdg-desktop-portal-hyprland hypridle \
+    hyprpolkitagent \
+    waybar wf-recorder wl-clipboard slurp grim
 }
 
 # Function to compile and install dwm and st from source
@@ -192,28 +220,71 @@ EndSection
 EOF
 }
 
+setup_x11() {
+    echo "== Installing X11 Setup =="
+    install_x_packages
+    compile_dwm_st
+    configure_x
+    setup_touchpad
+}
+
+setup_wayland() {
+    echo "== Installing Wayland Setup =="
+    install_wayland_packages
+}
+
 # Main function
 main() {
-    echo "Starting Arch Linux setup..."
+    local setup_type="$1"
 
-    install_packages
+    if [ $# -eq 0 ]; then
+        echo "Error: No setup type specified.\n"
+        usage
+        exit 1
+    fi
+
+    # Handle help flag
+    case "$setup_type" in
+        -h|--help)
+            usage
+            exit 0
+            ;;
+    esac
+
+    echo "Starting setup for: $setup_type"
+    echo "==============================="
+
+    install_base_packages
     install_aur_packages
     install_filemanager
-
-    compile_dwm_st
-
     configure_system
-    configure_x
 
+    case "$setup_type" in
+        x|x11)
+            setup_x
+            ;;
+        w|wayland)
+            install_wayland_setup
+            ;;
+        both)
+            install_x11_setup
+            install_wayland_setup
+            ;;
+        *)
+            echo "Error: Unknown setup type '$setup_type'"
+            echo ""
+            show_usage
+            exit 1
+            ;;
+    esac
+
+    echo "== Running Common Setup Tasks =="
     manage_keys
     manage_stash
     manage_syms
-
     setup_git_repo
-    setup_touchpad
 
-    echo "Arch Linux setup completed successfully!"
+    echo "Setup for ($setup_type) completed successfully!"
 }
 
-main
-
+main "$@"

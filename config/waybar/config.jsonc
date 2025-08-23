@@ -1,9 +1,7 @@
 {
   "layer": "top",
   "spacing": 0,
-  "height": 30,
-
-  "margin": 1,
+  "height": 20,
 
   "modules-left": ["hyprland/workspaces"],
 
@@ -43,7 +41,6 @@
   },
 
   "network": {
-    // "format-wifi": "wifi {bandwidthDownBits}",
     "format-wifi": "W: {essid} |",
     "format-ethernet": "<i>E: {ifname}</i> |",
     "format-disconnected": "<i>offline</i> |",

@@ -3,6 +3,10 @@ vim.g.maplocalleader = " "
 
 vim.keymap.set("n", "<leader>pv", "<cmd>e .<CR>")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+-- Term is back
+vim.keymap.set("n", "<leader>tt", "<cmd>Term<CR>", { desc = "Open term split bottom" })
+vim.keymap.set("n", "<leader>st", "<cmd>vs | FTerm<CR>", { desc = "Open term split to right" })
+
 vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", {})
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 -- Split size manipulation
@@ -45,3 +49,6 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, {})
 
 vim.keymap.set("n", "<leader>tp", "<cmd>tabnext<CR>", {})
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnext<CR>", {})
+
+vim.keymap.set("n", "<leader>pr", "<cmd>:Typ<CR>", { desc = "Start typst previewer" })
+vim.keymap.set("n", "<leader>spr", "<cmd>:Styp<CR>", { desc = "Stop typst previewer" })

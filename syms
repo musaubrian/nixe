@@ -13,3 +13,4 @@ $HOME/.config/dunst         = ./config/dunst
 $HOME/.config/hypr          = ./config/hypr
 $HOME/.config/waybar        = ./config/waybar
 $HOME/.config/foot          = ./config/foot
+$HOME/.config/kitty          = ./config/kitty

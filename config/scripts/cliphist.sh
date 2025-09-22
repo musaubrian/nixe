@@ -6,8 +6,10 @@ PLACEHOLDER="<NL>"
 CLIP_HIST="$HOME/.cache/clip_history"
 OPT="$1"
 
-
-[ -f "$CLIP_HIST" ] || touch "$CLIP_HIST"
+# Xorg only
+if [[ -z "$WYLND" ]]; then
+  [ -f "$CLIP_HIST" ] || touch "$CLIP_HIST"
+fi
 
 watch_clip() {
   while true; do
@@ -34,11 +36,16 @@ copy() {
   [ -n "$sel" ] &&  echo "$sel" | sed "s/$PLACEHOLDER/\n/g" | xclip -i -selection clipboard
 }
 
+copy_wayland() {
+  cliphist list | rofi -dmenu -p clip-hist | cliphist decode | wl-copy
+}
+
 usage() {
   echo "Usage:
-  cliphist <watch|copy>"
+  cliphist <watch|copy|way>"
   exit 1
 }
+
 
 [ -z "$OPT" ] && usage
 
@@ -46,6 +53,8 @@ if [[ "$OPT" == "watch" ]]; then
   watch_clip
 elif [[ "$OPT" == "copy" ]]; then
   copy
+elif [[ -n "$WYLND" ]]; then
+  copy_wayland
 else
   usage
 fi

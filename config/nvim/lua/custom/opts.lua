@@ -17,7 +17,6 @@ vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.smartindent = true
-vim.opt.spell = true
 vim.o.mouse = "a"
 vim.o.clipboard = "unnamedplus"
 vim.o.undofile = true

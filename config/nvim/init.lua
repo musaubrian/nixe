@@ -2,9 +2,7 @@ require "custom.user"
 require "custom.opts"
 require "custom.keys"
 require "custom.snips"
-
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+require "custom.jade"
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

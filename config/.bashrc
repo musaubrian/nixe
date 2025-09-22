@@ -168,6 +168,7 @@ export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.config/emacs/bin"
 
 
 navigate() {
@@ -183,3 +184,5 @@ bind -x '"\ed":sessions'
 
 python3 ~/scripts/gg.py -lst
 . "$HOME/.cargo/env"
+export NEXT_TELEMETRY_DEBUG=1
+# honestly why windows

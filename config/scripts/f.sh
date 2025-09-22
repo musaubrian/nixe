@@ -29,7 +29,7 @@ if [[ -n "$SELECTED_DIR" ]]; then
     builtin cd "$HOME/$SELECTED_DIR"
 
     # don't use tmux in kitty
-    if [[ "$TERM" != "xterm-kitty" ]]; then
+    if [[ "$TERM" != "xterm-kitty" && "$TERM" != "xterm-ghostty" ]]; then
         SESSION=$(basename "$SELECTED_DIR" | tr '.' '_')
         tmux new-session -d -s "$SESSION"
         switch_or_attach "$SESSION"

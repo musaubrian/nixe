@@ -1,7 +1,6 @@
 {
   "layer": "top",
   "spacing": 0,
-  "height": 20,
 
   "modules-left": ["hyprland/workspaces"],
 
@@ -13,10 +12,6 @@
     "disable-scroll": true,
     "all-outputs": true,
     "tooltip": false,
-
-    "persistent-workspaces": {
-      "*": [1, 2],
-    },
   },
 
   "tray": {
@@ -25,7 +20,7 @@
   },
 
   "clock": {
-    "format": "{:%H:%M - %a, %d %b}",
+    "format": "{:%H:%M - %a, %d}",
     "tooltip": false,
   },
 

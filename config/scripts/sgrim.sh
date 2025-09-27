@@ -10,7 +10,7 @@ if [ "$#" -eq 0 ]; then
     #default to copy to clipboard
     grim -g "$(slurp -d)" - | wl-copy
     if [ $? -eq 0 ]; then
-        notify-send -a "grim" -u low -i "$HOME/personal/nixe/config/wall.jpg" "Screenshot Saved to clipboard"
+        notify-send -a "grim" -u low -i "$HOME/personal/nixe/config/wall.png" "Screenshot Saved to clipboard"
     fi
 else
     grim -g "$(slurp -d)" "$FILEPATH"

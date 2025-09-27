@@ -1,57 +1,55 @@
-local ncolors = {
-  { name = "cyan", light = "", color = "", dark = "" },
-}
-
 local colors = {
   -- Base colors
-  cyan = "#8abeb7",
-  dark = "#171717",
-  white = "#fefefe",
-  green = "#99cc99",
-  yellow = "#f0c674",
-  blue = "#81a2be",
-  sky_blue = "#7bdaf7",
-  turquoise = "#8abec7",
-  orange = "#d7875f",
-  red = "#cc6666",
-  gray = "#949494",
-  light_gray = "#7f7f7f",
-  lighter_gray = "#6f6e6f",
-  brick = "#875f5f",
-  ml_bg = "#2e2e2e",
-  ml_git_branch = "#d9d9d9",
+  -- stylua: ignore start
+  cyan               = "#8abeb7",
+  dark               = "#1a252f",
+  white              = "#fefefe",
+  green              = "#99cc99",
+  yellow             = "#ebcb8b",
+  blue               = "#81a2be",
+  sky_blue           = "#8fbcbb",
+  turquoise          = "#8abec7",
+  orange             = "#c9967a",
+  red                = "#bf616a",
+  gray               = "#949494",
+  light_gray         = "#7f7f7f",
+  lighter_gray       = "#6f6e6f",
+  brick              = "#875f5f",
+  ml_bg              = "#243240",
+  ml_git_branch      = "#d9d9d9",
 
   -- Light variants
-  cyan_light = "#b3d1cb",
-  dark_light = "#2a2a2a",
-  white_light = "#ffffff",
-  green_light = "#b3d9b3",
-  yellow_light = "#f4d4a7",
-  blue_light = "#a1b8d1",
-  sky_blue_light = "#9ee5f9",
-  turquoise_light = "#b1d1d8",
-  orange_light = "#e5a188",
-  red_light = "#d99999",
-  gray_light = "#b5b5b5",
-  light_gray_light = "#a5a5a5",
+  cyan_light         = "#b3d1cb",
+  dark_light         = "#243240",
+  white_light        = "#ffffff",
+  green_light        = "#b3d9b3",
+  yellow_light       = "#f0d49c",
+  blue_light         = "#a1b8d1",
+  sky_blue_light     = "#b8e6e1",
+  turquoise_light    = "#b1d1d8",
+  orange_light       = "#ddb195",
+  red_light          = "#d19ca3",
+  gray_light         = "#b5b5b5",
+  light_gray_light   = "#a5a5a5",
   lighter_gray_light = "#8f8e8f",
-  brick_light = "#a5888a",
+  brick_light        = "#a5888a",
 
   -- Dark variants
-  cyan_dark = "#5c8a82",
-  dark_dark = "#0a0a0a",
-  white_dark = "#cccccc",
-  green_dark = "#66996e",
-  yellow_dark = "#c7a042",
-  blue_dark = "#5a7a8c",
-  sky_blue_dark = "#4db0c5",
-  turquoise_dark = "#5c8a95",
-  orange_dark = "#a5632d",
-  red_dark = "#994d4d",
-  gray_dark = "#6b6b6b",
-  light_gray_dark = "#555555",
-  lighter_gray_dark = "#4a4a4a",
-  brick_dark = "#5f3f3f",
+  cyan_dark          = "#5c8a82",
+  dark_dark          = "#0f1a23",
+  white_dark         = "#cccccc",
+  green_dark         = "#66996e",
+  yellow_dark        = "#c7a155",
+  blue_dark          = "#5a7a8c",
+  sky_blue_dark      = "#6b9a97",
+  turquoise_dark     = "#5c8a95",
+  orange_dark        = "#a6785f",
+  red_dark           = "#9c525a",
+  gray_dark          = "#6b6b6b",
+  light_gray_dark    = "#555555",
+  lighter_gray_dark  = "#4a4a4a",
+  brick_dark         = "#5f3f3f",
+  -- stylua: ignore end
 }
 
 vim.api.nvim_set_hl(0, "Function", { fg = colors.sky_blue_light, bg = nil })
@@ -93,7 +91,7 @@ vim.api.nvim_set_hl(0, "NormalFloat", { fg = nil, bg = nil })
 vim.api.nvim_set_hl(0, "Number", { fg = colors.yellow, bg = nil, bold = true })
 vim.api.nvim_set_hl(0, "SpecialChar", { fg = colors.cyan, bg = nil, italic = true })
 
-vim.api.nvim_set_hl(0, "Directory", { fg = colors.orange_light, bg = nil, bold = true })
+vim.api.nvim_set_hl(0, "Directory", { fg = colors.orange, bg = nil, bold = true })
 
 vim.api.nvim_set_hl(0, "Tag", { fg = colors.orange_light, bg = nil, bold = true })
 vim.api.nvim_set_hl(0, "SecondaryTag", { fg = colors.blue_light, bg = nil, italic = true })
@@ -112,7 +110,7 @@ vim.api.nvim_set_hl(0, "DiffText", { fg = colors.white, bg = nil })
 
 vim.api.nvim_set_hl(0, "MinLineMode", { fg = colors.blue, bg = colors.ml_bg, bold = true })
 vim.api.nvim_set_hl(0, "MinLineGitBranch", { fg = colors.ml_git_branch, bg = colors.ml_bg, bold = true })
-vim.api.nvim_set_hl(0, "MinLinePrimaryText", { fg = colors.white, bg = colors.ml_bg, bold = true })
+vim.api.nvim_set_hl(0, "MinLinePrimaryText", { fg = colors.ml_git_branch, bg = colors.ml_bg, bold = true })
 vim.api.nvim_set_hl(0, "MinLineSecondaryText", { fg = colors.white_light, bg = colors.ml_bg })
 
 vim.api.nvim_set_hl(0, "Deprecated", { fg = colors.brick, bg = nil, italic = true })

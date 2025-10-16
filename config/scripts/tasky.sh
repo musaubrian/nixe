@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## kill processes because `awk` is pretty good
-raw_process=$(ps ax | rofi -dmenu -p processes)
+raw_process=$(ps ax | fuzzel --dmenu -p"process ")
 process=$(echo "$raw_process"| awk 'NR== 1{ print $1 }')
 process_name=$(echo "$raw_process"| awk 'NR== 1{ print $5 }')
 

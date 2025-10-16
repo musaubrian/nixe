@@ -24,7 +24,7 @@ install_base_packages() {
     network-manager-applet\
     git wget gcc make sqlite unzip tree jq tmux ffmpeg fzf yt-dlp \
     hugo neovim btop ripgrep difftastic man-pages man-db less\
-    firefox  syncthing rofi feh zathura zathura-pdf-poppler \
+    firefox  syncthing fuzzel feh zathura zathura-pdf-poppler \
     libreoffice-fresh telegram-desktop mpv sshfs \
     nodejs npm go php \
     stylua lua-language-server python-lsp-server typescript-language-server tinymist \

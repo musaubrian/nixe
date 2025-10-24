@@ -32,12 +32,12 @@ watch_clip() {
 }
 
 copy() {
-  sel="$(tac $CLIP_HIST | rofi -dmenu -p clipboard-history)"
+  sel="$(tac $CLIP_HIST | fuzzel --dmenu -p clipboard-history)"
   [ -n "$sel" ] &&  echo "$sel" | sed "s/$PLACEHOLDER/\n/g" | xclip -i -selection clipboard
 }
 
 copy_wayland() {
-  cliphist list | rofi -dmenu -p clip-hist | cliphist decode | wl-copy
+  cliphist list | fuzzel --dmenu -p clip-hist | cliphist decode | wl-copy
 }
 
 usage() {

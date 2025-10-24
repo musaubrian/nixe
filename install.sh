@@ -28,7 +28,7 @@ install_base_packages() {
     libreoffice-fresh telegram-desktop mpv sshfs \
     nodejs npm go php \
     stylua lua-language-server python-lsp-server typescript-language-server tinymist \
-    noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttc-iosevka ttf-jetbrains-mono gnu-free-fonts
+    noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttc-iosevka ttf-jetbrains-mono-nerd gnu-free-fonts
 }
 
 install_x_packages() {

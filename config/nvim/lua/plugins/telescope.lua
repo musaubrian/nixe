@@ -16,10 +16,11 @@ return {
   config = function()
     require("telescope").setup {
       defaults = {
-        scroll_strategy = "cycle",
+        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         layout_config = {
           prompt_position = "top",
-          height = 0.8,
+          height = 0.9,
+          width = 0.95,
         },
         mappings = {
           i = {

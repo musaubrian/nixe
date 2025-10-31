@@ -15,3 +15,4 @@ $HOME/.config/waybar    = ./config/waybar
 $HOME/.config/foot      = ./config/foot
 $HOME/.config/kitty     = ./config/kitty
 $HOME/.config/caddy/    = ./config/caddy/
+$HOME/.config/jj        = ./config/jj/

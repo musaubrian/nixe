@@ -5,15 +5,3 @@
 smin.lan {
     reverse_proxy 127.0.0.1
 }
-
-sync.smin.lan {
-    reverse_proxy 127.0.0.1:8384
-}
-
-sik.smin.lan {
-    reverse_proxy 127.0.0.1:8990
-}
-
-search.smin.lan {
-    reverse_proxy 127.0.0.1:5456
-}

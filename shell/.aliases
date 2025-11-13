@@ -1,0 +1,36 @@
+alias cleand="~/.local/bin/scripts/cleand.sh"
+alias tmx="~/.local/bin/scripts/tmx.sh"
+alias vim="nvim"
+alias p="cd ~/personal/"
+alias w="cd ~/work/"
+alias t="cd ~/thirdparty/"
+alias clone="~/.local/bin/scripts/clone.sh"
+alias renix="~/.local/bin/scripts/renix.sh"
+alias yt="~/.local/bin/scripts/yt.sh"
+alias ms="~/.local/bin/scripts/music.sh"
+alias titly="python ~/.local/bin/scripts/titly.py"
+alias ...=../..
+alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias l='ls -lah'
+alias la='ls -lAh'
+alias ll='ls -lh'
+alias ls='ls --color=tty'
+alias lsa='ls -lah'
+alias md='mkdir -p'
+alias reload='source ~/.profile && clear'
+alias f="~/.local/bin/scripts/f.sh"
+alias wget="~/.local/bin/scripts/wget.sh"
+alias ffmchop="~/.local/bin/scripts/ffmchop.sh"
+alias journal="~/.local/bin/scripts/jt.sh"
+alias jot="~/.local/bin/scripts/jot.sh"
+alias h264="~/.local/bin/scripts/h264Convert"
+alias gg="python3 ~/.local/bin/scripts/gg.py"
+alias startd="~/.local/bin/scripts/dwm-startup.sh"
+alias orphans="pacman -Qdt"
+alias purge="~/.local/bin/scripts/purge.sh"
+alias rm="rm -v"
+alias cp="cp -v"
+alias mv="mv -v"
+alias ex="~/.local/bin/scripts/extractor.sh"
+alias zigdocs="xdg-open ~/thirdparty/zig/doc/langref.html"
+alias tree="tree --gitignore"

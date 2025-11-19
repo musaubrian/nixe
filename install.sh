@@ -9,7 +9,7 @@ install_base_packages() {
     base-devel networkmanager ansible acpi bluez bluez-utils blueman pavucontrol brightnessctl \
     network-manager-applet \
     git wget gcc make sqlite unzip tree jq tmux ffmpeg fzf yt-dlp \
-    hugo btop ripgrep difftastic man-pages man-db less \
+    hugo bottom ripgrep difftastic man-pages man-db less \
     firefox  syncthing fuzzel feh zathura zathura-pdf-poppler \
     telegram-desktop mpv sshfs \
     nodejs npm go php \
@@ -96,6 +96,8 @@ main() {
     install_aur_packages
     install_hyprland_packages
     enable_services
+
+    setup_dots
 
     manage_keys
     manage_stash

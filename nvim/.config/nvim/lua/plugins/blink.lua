@@ -39,10 +39,6 @@ return {
           columns = { { "label", "label_description", gap = 1 }, { "kind" } },
         },
       },
-      ghost_text = {
-        enabled = true,
-        show_with_menu = false,
-      },
     },
   },
 }

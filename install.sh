@@ -7,7 +7,7 @@ AUR_HELPER="paru"
 install_base_packages() {
     sudo pacman -S --needed --noconfirm \
     base-devel networkmanager ansible acpi bluez bluez-utils blueman pavucontrol brightnessctl \
-    network-manager-applet \
+    network-manager-applet fish \
     git wget gcc make sqlite unzip tree jq tmux ffmpeg fzf yt-dlp \
     hugo bottom ripgrep difftastic man-pages man-db less \
     firefox  syncthing fuzzel feh zathura zathura-pdf-poppler \
@@ -87,7 +87,7 @@ install_filemanager() {
 }
 
 setup_dots() {
-    stow -t ~ caddy fuzzel git hypr jj kitty mako nvim scripts shell walls waybar -v 2
+    stow -t ~ caddy fuzzel git hypr jj kitty mako nvim scripts shell walls waybar fish -v 2
 }
 
 main() {
@@ -102,6 +102,8 @@ main() {
     manage_keys
     manage_stash
     setup_git_repo
+
+    sudo chsh -s $(which fish) #drink fish koolaid
 }
 
 main

@@ -26,7 +26,13 @@ switch_or_attach(){
 }
 
 if [[ -n "$SELECTED_DIR" ]]; then
-    builtin cd "$HOME/$SELECTED_DIR"
+    FULL_PATH="$HOME/$SELECTED_DIR"
+
+    if [[ "$1" == "fish" ]]; then
+        echo "$FULL_PATH"
+    else
+        builtin cd "$FULL_PATH"
+    fi
 
     # don't use tmux in kitty
     if [[ "$TERM" != "xterm-kitty" && "$TERM" != "xterm-ghostty" ]]; then
@@ -35,5 +41,5 @@ if [[ -n "$SELECTED_DIR" ]]; then
         switch_or_attach "$SESSION"
     fi
 else
-    echo "[ERROR]: No directory selected"
+    echo "[ERROR]: No directory selected" >&2
 fi

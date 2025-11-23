@@ -5,7 +5,10 @@ if test -f ~/.aliases
 end
 
 function navigate
-    bash ~/.local/bin/scripts/f.sh
+    set -l result (bash ~/.local/bin/scripts/f.sh fish)
+    if test -n "$result"; and test "$result" != "[ERROR]: No directory selected"
+        cd "$result"
+    end
 end
 
 function sessions

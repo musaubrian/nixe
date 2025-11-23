@@ -2,7 +2,7 @@
 
 set -xe
 
-AUR_HELPER="paru"
+AUR_HELPER="yay"
 
 install_base_packages() {
     sudo pacman -S --needed --noconfirm \

@@ -1,7 +1,0 @@
-{
-    local_certs
-}
-
-smin.lan {
-    reverse_proxy 127.0.0.1
-}

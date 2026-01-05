@@ -28,11 +28,6 @@ set -gx PATH $PATH /usr/local/go/bin "$GOPATH/bin"
 set -gx VISUAL nvim
 set -gx EDITOR "$VISUAL"
 
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-if not contains "$PNPM_HOME" $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
-
 set -gx ANDROID_HOME "$HOME/Android/Sdk"
 set -gx PATH $PATH "$ANDROID_HOME/emulator" "$ANDROID_HOME/platform-tools"
 

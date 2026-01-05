@@ -6,6 +6,7 @@ email           = "musaubrian15@gmail.com"
 
 [ui]
 default-command = "log"
+diff-editor = ":builtin"
 
 [signing]
 behavior        = "own"

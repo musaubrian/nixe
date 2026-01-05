@@ -102,12 +102,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, {})
 
     vim.api.nvim_create_user_command("LspRestart", function()
-      vim.lsp.stop_client(event.data.client_id)
+      client:stop()
       vim.lsp.start(client.config, {})
     end, {})
 
     vim.api.nvim_create_user_command("LspStop", function()
-      vim.lsp.stop_client(event.data.client_id)
+      client:stop()
     end, {})
 
     vim.api.nvim_create_user_command("LspStart", function()

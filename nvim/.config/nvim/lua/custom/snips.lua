@@ -51,7 +51,7 @@ s.add {
         trig = "imp",
         desc = "Import stuff",
         body = {
-          'const firebaseAdmin = require("firebase-admin")',
+          "const firebaseAdmin = require('firebase-admin')",
           "const db = firebaseAdmin.firestore()",
           "const router = require('express').Router()",
         },

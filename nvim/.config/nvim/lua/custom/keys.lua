@@ -3,6 +3,8 @@ vim.g.maplocalleader = " "
 
 vim.keymap.set("n", "<leader>pv", "<cmd>e .<CR>")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+vim.keymap.set("n", "<leader>m", "<cmd>:make<CR>", { desc = "Run make" })
 -- Term is back
 vim.keymap.set("n", "<leader>tt", "<cmd>Term<CR>", { desc = "Open term split bottom" })
 vim.keymap.set("n", "<leader>st", "<cmd>vs | FTerm<CR>", { desc = "Open term split to right" })

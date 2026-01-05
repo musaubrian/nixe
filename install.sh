@@ -62,7 +62,7 @@ install_aur_packages() {
     fi
 
     $AUR_HELPER -S --needed --noconfirm \
-        nwg-look pnpm
+        nwg-look pnpm xcursor-breeze
 
 }
 

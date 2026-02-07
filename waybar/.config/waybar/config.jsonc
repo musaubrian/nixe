@@ -2,22 +2,11 @@
   "layer": "top",
   "spacing": 0,
 
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["clock"],
 
-  "modules-center": ["clock"],
+  "modules-center": [],
 
   "modules-right": ["pulseaudio", "battery", "tray"],
-
-  "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
-    "tooltip": false,
-    "format": "{icon}",
-    "format-icons": {
-      "active": "",
-      "default": "",
-    },
-  },
 
   "tray": {
     "spacing": 10,
@@ -30,7 +19,7 @@
   },
 
   "battery": {
-    "format": "󰁹 {capacity}% ",
+    "format": "bat: {capacity}% ",
     "interval": 5,
     "states": {
       "warning": 20,
@@ -43,8 +32,8 @@
   "pulseaudio": {
     "scroll-step": 5,
     "max-volume": 150,
-    "format": "󰕾 {volume}% ",
-    "format-bluetooth": "󰂯 {volume}% ",
+    "format": "vol: {volume}% ",
+    "format-bluetooth": "bt: {volume}% ",
     "nospacing": 1,
     "on-click": "pavucontrol",
     "tooltip": false,

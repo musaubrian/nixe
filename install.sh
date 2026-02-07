@@ -7,7 +7,7 @@ AUR_HELPER="yay"
 install_base_packages() {
     sudo pacman -S --needed --noconfirm \
     base-devel networkmanager ansible acpi bluez bluez-utils blueman pavucontrol brightnessctl \
-    network-manager-applet fish \
+    network-manager-applet fish mako \
     git wget gcc make sqlite unzip tree jq tmux ffmpeg fzf yt-dlp \
     hugo bottom ripgrep difftastic man-pages man-db less \
     firefox  syncthing fuzzel feh zathura zathura-pdf-poppler \
@@ -15,14 +15,14 @@ install_base_packages() {
     nodejs npm go php \
     stylua lua-language-server python-lsp-server typescript-language-server tinymist \
     marksman gopls tailwindcss-language-server \
-    noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttf-jetbrains-mono-nerd gnu-free-fonts
+    noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttf-jetbrains-mono gnu-free-fonts \
+    waybar wf-recorder wl-clipboard
 }
 
-install_hyprland_packages() {
-    sudo pacman -S --needed --noconfirm \
-    hyprland hyprpaper hyprlock xdg-desktop-portal-hyprland hypridle hyprsunset mako \
-    hyprpolkitagent \
-    waybar wf-recorder wl-clipboard slurp grim python-pywal
+install_niri_packages() {
+    sudoe pacman -S --needed --noconfirm \
+        niri xwayland-satellite xdg-desktop-portal-gnome xdg-desktop-portal-gtk \
+        swaybg
 }
 
 manage_keys() {
@@ -87,14 +87,14 @@ install_filemanager() {
 }
 
 setup_dots() {
-    stow -t ~ caddy fuzzel git hypr jj kitty mako nvim scripts shell walls waybar fish -v 2
+    stow -t ~ niri caddy fuzzel git jj kitty mako nvim scripts shell walls waybar fish -v 2
 }
 
 main() {
     install_base_packages
     install_filemanager
     install_aur_packages
-    install_hyprland_packages
+    install_niri_packages
     enable_services
 
     setup_dots

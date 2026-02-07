@@ -30,12 +30,10 @@ set -gx EDITOR "$VISUAL"
 
 set -gx ANDROID_HOME "$HOME/Android/Sdk"
 set -gx PATH $PATH "$ANDROID_HOME/emulator" "$ANDROID_HOME/platform-tools"
-
 set -gx PATH $PATH "$HOME/.cargo/bin"
-
 set -gx PATH $PATH "$HOME/thirdparty/zig"
-
 set -gx NEXT_TELEMETRY_DEBUG 1
+set -gx PATH $PATH "$HOME/.bun/bin"
 
 gg -lst
 

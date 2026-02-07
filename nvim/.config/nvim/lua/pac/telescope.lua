@@ -1,20 +1,8 @@
-return {
-  "nvim-telescope/telescope.nvim",
-  event = "VimEnter",
-  branch = "0.1.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      cond = function()
-        return vim.fn.executable "make" == 1
-      end,
-    },
-  },
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+  callback = function()
+    local telescope = require "telescope"
 
-  config = function()
-    require("telescope").setup {
+    telescope.setup {
       defaults = {
         borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         layout_config = {
@@ -29,12 +17,9 @@ return {
           },
         },
       },
-      extensions = {
-        fzf = {},
-      },
     }
-    require("telescope").load_extension "fzf"
-    require("plugins.telescope.fine_grep").setup()
+
+    require "pac.telescope.fine_grep"
 
     local builtin = require "telescope.builtin"
     local action = require "telescope.actions"
@@ -63,14 +48,12 @@ return {
 
     vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 
-    vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-    vim.keymap.set("n", "<leader>lg", builtin.live_grep, { desc = "[L]ive [G]rep" })
     vim.keymap.set("n", "<leader>wk", builtin.keymaps, { desc = "Available keybinds [W]hich [K]ey" })
-    vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "[D]iagnostics" })
 
     vim.keymap.set("n", "C-q", function()
       action.smart_send_to_qflist()
       vim.cmd "copen"
     end, { desc = "Send items to quick fix list" })
   end,
-}
+  once = true,
+})

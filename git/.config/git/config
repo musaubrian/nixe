@@ -1,6 +1,7 @@
 [user]
 	name=musaubrian
 	email=musaubrian15@gmail.com
+	signingkey = /home/smin/.ssh/signing.pub
 
 [init]
 	defaultBranch=main
@@ -24,3 +25,5 @@
 
 [diff]
 	external=difft
+[gpg]
+	format = ssh

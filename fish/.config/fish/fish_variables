@@ -1,3 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:4300
+SETUVAR fish_color_venv:65737e
+SETUVAR fish_color_git:ebcb8b
+SETUVAR fish_color_char:65737e

@@ -1,0 +1,43 @@
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+  callback = function()
+    local blink = require "blink.cmp"
+
+    blink.setup {
+      keymap = {
+        preset = "default",
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<C-e>"] = { "hide" },
+        ["<A-CR>"] = { "select_and_accept" },
+      },
+      fuzzy = { implementation = "prefer_rust" },
+
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+        providers = {
+          path = {
+            opts = {
+              get_cwd = function(_)
+                return vim.fn.getcwd()
+              end,
+            },
+          },
+        },
+      },
+      completion = {
+        menu = {
+          auto_show = function()
+            if vim.fn.mode() == "c" or vim.fn.mode() == "i" then
+              return false
+            end
+            return true
+          end,
+          draw = {
+            columns = { { "label", "label_description", gap = 1 }, { "kind" } },
+          },
+        },
+      },
+    }
+  end,
+  once = true,
+})

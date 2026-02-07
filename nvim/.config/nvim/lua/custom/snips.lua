@@ -24,43 +24,6 @@ s.add {
 }
 
 s.add {
-  javascript = {
-    {
-      trig = "res5",
-      desc = "500 result express",
-      body = "return res.status(500).json({message: '${1}'})",
-    },
-    {
-      trig = "res4",
-      desc = "400 result express",
-      body = "return res.status(400).json({message: '[BAD REQUEST]: ${1}'})",
-    },
-    {
-      trig = "res2",
-      desc = "200 result express",
-      body = 'return res.status(200).json({message: "${1}", ${2}})',
-    },
-    {
-      trig = "fba",
-      desc = "initialize firebase admin and db",
-      body = {
-        'const firebaseAdmin = require("firebase-admin")',
-        "const db = firebaseAdmin.firestore()",
-      },
-      {
-        trig = "imp",
-        desc = "Import stuff",
-        body = {
-          "const firebaseAdmin = require('firebase-admin')",
-          "const db = firebaseAdmin.firestore()",
-          "const router = require('express').Router()",
-        },
-      },
-    },
-  },
-}
-
-s.add {
   markdown = {
     {
       trig = "nm",
@@ -90,5 +53,30 @@ s.add {
     },
     { trig = "fn", desc = "markdown footnote", body = "[^{}]" },
     { trig = "fnr", desc = "markdown footnote reference", body = "[^{}]: ${1}" },
+  },
+}
+
+s.add {
+  typescript = {
+    {
+      trig = "efg",
+      desc = "Effect.gen(function* () {...})",
+      body = "Effect.gen(function* () { ${1} })",
+    },
+    {
+      trig = "etp",
+      desc = "Effect.tryPromise({...})",
+      body = {
+        "Effect.tryPromise({",
+        "  try: () => ${1},",
+        "  catch: (error) => new ${2}",
+        "})",
+      },
+    },
+    {
+      trig = "erp",
+      desc = "Effect.runPromise(...)",
+      body = "Effect.runPromise(${1})",
+    },
   },
 }

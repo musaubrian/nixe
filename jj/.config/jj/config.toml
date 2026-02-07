@@ -6,11 +6,12 @@ email           = "musaubrian15@gmail.com"
 
 [ui]
 default-command = "log"
-diff-editor = ":builtin"
+diff-editor     = ":builtin"
 
-[signing]
-behavior        = "own"
-backend         = "gpg"
+# [signing]
+# behavior        = "own"
+# backend         = "ssh"
+# path            = "/home/smin/.ssh/signing.pub"
 
 [aliases]
 difft           = ["diff", "--tool=difft"]

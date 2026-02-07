@@ -2,7 +2,7 @@ local M = { mod_cache = nil }
 
 M = {
   cmd = { "gopls" },
-  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  filetypes = { "go", "gomod" },
   root_dir = function(bufnr, on_dir)
     local fname = vim.api.nvim_buf_get_name(bufnr)
     -- see: https://github.com/neovim/nvim-lspconfig/issues/804

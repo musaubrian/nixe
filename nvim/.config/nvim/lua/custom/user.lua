@@ -45,7 +45,7 @@ vim.api.nvim_create_user_command("GenId", function()
   local short = uuid:match(".*%-(.+)$"):gsub("\n", "")
   if short then
     vim.fn.setreg("+", short, "c")
-    vim.notify "ID copied to clipboard"
+    vim.notify "Copied to clipboard"
   end
 end, { desc = "Generate an id" })
 
@@ -61,7 +61,7 @@ vim.api.nvim_create_autocmd({ "TermClose" }, {
 -- Open terminal in split view at the bottom
 vim.api.nvim_create_user_command("Term", function()
   vim.cmd.setlocal "splitbelow"
-  vim.cmd "17split |term"
+  vim.cmd "18split |term"
 end, { desc = "Open terminal in split mode at the bottom" })
 
 vim.api.nvim_create_user_command("FTerm", function()
@@ -134,11 +134,71 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-vim.filetype.add {
-  extension = {
-    templ = "templ",
-  },
-}
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = me_group,
+  callback = function(ev)
+    if not ev.match or ev.match == "" or ev.match == "text" then
+      vim.treesitter.stop()
+    end
+    pcall(function()
+      vim.treesitter.start()
+    end)
+  end,
+})
+
 vim.cmd [[
   let g:did_install_default_menus = 1
+  let g:loaded_netrwPlugin = 0
 ]]
+
+vim.api.nvim_create_user_command("PackClean", function()
+  local active_plugins = {}
+  local inactive_plugins = {}
+
+  for _, plugin in ipairs(vim.pack.get()) do
+    active_plugins[plugin.spec.name] = plugin.active
+  end
+
+  for _, plugin in ipairs(vim.pack.get()) do
+    if not active_plugins[plugin.spec.name] then
+      table.insert(inactive_plugins, plugin.spec.name)
+    end
+  end
+
+  if #inactive_plugins == 0 then
+    vim.notify("No unused plugins", vim.log.levels.INFO)
+    return
+  end
+
+  local choice = vim.fn.confirm("Remove unused plugins?", "&Yes\n&No", 2)
+  if choice == 1 then
+    vim.pack.del(inactive_plugins)
+  end
+end, { desc = "Remove unused plugins" })
+
+vim.api.nvim_create_user_command("PackUpdate", function()
+  vim.pack.update()
+end, { desc = "Update plugins" })
+
+vim.api.nvim_create_user_command("TSUser", function()
+  require("nvim-treesitter").install {
+    "c",
+    "lua",
+    "vim",
+    "vimdoc",
+    "markdown",
+    "markdown_inline",
+    "query",
+    "svelte",
+    "zig",
+    "cpp",
+    "python",
+  }
+end, { desc = "Install my treesitter stuff" })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "odin",
+  callback = function()
+    vim.opt_local.errorformat = "%f(%l:%c) %m, %-G%.%#"
+  end,
+})

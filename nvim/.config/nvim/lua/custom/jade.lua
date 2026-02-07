@@ -53,7 +53,7 @@ local colors = {
 }
 
 vim.api.nvim_set_hl(0, "Function", { fg = colors.sky_blue_light, bg = nil })
-vim.api.nvim_set_hl(0, "Keyword", { fg = colors.white_dark, bg = nil, bold = true })
+vim.api.nvim_set_hl(0, "Keyword", { fg = colors.white_dark, bg = nil, bold = false })
 vim.api.nvim_set_hl(0, "Error", { fg = colors.red, bg = nil, italic = true })
 vim.api.nvim_set_hl(0, "Warning", { fg = colors.orange, bg = nil, italic = true })
 vim.api.nvim_set_hl(0, "Hint", { fg = colors.blue, bg = nil })
@@ -154,6 +154,10 @@ vim.api.nvim_set_hl(0, "@keyword.directive.markdown", { link = "MDmeta" })
 vim.api.nvim_set_hl(0, "@markup.link.label.markdown_inline", { link = "MDlabel" })
 vim.api.nvim_set_hl(0, "@markup.link.markdown_inline", { link = "URI" })
 vim.api.nvim_set_hl(0, "@markup.link.url.markdown_inline", { link = "MDlink" })
+
+vim.api.nvim_set_hl(0, "@comment.error", { link = "DiagnosticError" })
+vim.api.nvim_set_hl(0, "@comment.warning", { link = "DiagnosticWarn" })
+vim.api.nvim_set_hl(0, "@comment.todo", { link = "DiagnosticInfo" })
 
 vim.api.nvim_set_hl(0, "BlinkCmpMenu", { link = "Pmenu" })
 vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "Pmenu" })

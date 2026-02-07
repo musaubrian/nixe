@@ -4,7 +4,6 @@ local pickers = require "telescope.pickers"
 local finders = require "telescope.finders"
 local make_entry = require "telescope.make_entry"
 local config = require("telescope.config").values
-local M = {}
 
 local function fine_grep(opts)
   opts = opts or {}
@@ -56,19 +55,17 @@ local function fine_grep(opts)
     })
     :find()
 end
-M.setup = function(opts)
-  vim.keymap.set("n", "<leader>fg", function()
-    fine_grep {
-      file_ignore_patterns = {
-        "node_modules/*",
-        "public/*",
-        "vendor/*",
-        "storage/*",
-        "*-lock*",
-        "*.lock",
-        "*.env",
-      },
-    }
-  end, { desc = "[F]ine [G]rep" })
-end
-return M
+
+vim.keymap.set("n", "<leader>fg", function()
+  fine_grep {
+    file_ignore_patterns = {
+      "node_modules/*",
+      "public/*",
+      "vendor/*",
+      "storage/*",
+      "*-lock*",
+      "*.lock",
+      "*.env",
+    },
+  }
+end, { desc = "[F]ine [G]rep" })

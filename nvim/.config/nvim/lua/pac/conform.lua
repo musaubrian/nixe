@@ -1,11 +1,8 @@
-return {
-  {
-    "stevearc/conform.nvim",
-    event = { "BufWritePre" },
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  callback = function()
+    local conform = require "conform"
 
-    ---@module "conform"
-    ---@type conform.setupOpts
-    opts = {
+    conform.setup {
       format_on_save = {
         timeout_ms = 500,
         lsp_format = "fallback",
@@ -26,7 +23,9 @@ return {
         python = { "ruff_format" },
         rust = { "rustfmt" },
         typst = { "typstyle" },
+        odin = { "odinfmt" },
       },
-    },
-  },
-}
+    }
+  end,
+  once = true,
+})

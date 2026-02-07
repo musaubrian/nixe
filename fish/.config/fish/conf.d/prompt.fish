@@ -103,18 +103,23 @@ function __prompt_handler --on-event fish_prompt
     end
 end
 
+__prompt_venv
 function fish_prompt
-    set -l git_info
-    if set -q __prompt_git; and test -n "$__prompt_git"
-        set git_info " ($__prompt_git)"
-    end
-
     set -l venv_info
     if set -q __prompt_venv; and test -n "$__prompt_venv"
-        set venv_info "($__prompt_venv)"
+        set venv_info (set_color $fish_color_venv)"$__prompt_venv"(set_color normal)
     end
 
-    printf "%s%s%s\n\$ " $venv_info $__prompt_pwd $git_info
+    set cwd (basename $PWD)(set_color normal)
+
+    set -l git_info
+    if set -q __prompt_git; and test -n "$__prompt_git"
+        set git_info (set_color $fish_color_git)" ($__prompt_git)"(set_color normal)
+    end
+
+    set __char (set_color $fish_color_char)" |"(set_color normal)
+
+    printf "%s%s%s%s " $venv_info $cwd $git_info $__char
 end
 
 function fish_title

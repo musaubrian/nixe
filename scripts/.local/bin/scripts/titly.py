@@ -29,7 +29,7 @@ def get_tags(filepath):
 
 
 def clean_yt(path):
-    """Original: strip [metadata] from YouTube files"""
+    """Strip [metadata] from YouTube files."""
     files = os.listdir(path)
     c = 0
     for file in files:
@@ -40,20 +40,26 @@ def clean_yt(path):
     print(f">>> {c} files renamed")
 
 
+JUNK_PATTERNS = [
+    r'\s*\(Official\s+(Music\s+)?Video\)',
+    r'\s*\(Official\s+Lyric\s+Video\)',
+    r'\s*\(Official\s+Audio\)',
+    r'\s*\(Lyric Video\)',
+    r'\s*\(Lyrics\)',
+    r'\s*\(Explicit\)',
+    r'\s*\(Audio\)',
+    r'\s*\(HD\)',
+    r'\s*\(HQ\)',
+    r'\s*\(Remaster[^)]*\)',
+    r'\s*\([^)]*\.com\)',
+    r'\s*\[.*?\]',
+]
+
+
 def clean_name(name):
     """Strip junk suffixes and normalize a filename stem."""
-    name = re.sub(r'\s*\(Official\s+(Music\s+)?Video\)', '', name, flags=re.I)
-    name = re.sub(r'\s*\(Official\s+Lyric\s+Video\)', '', name, flags=re.I)
-    name = re.sub(r'\s*\(Official\s+Audio\)', '', name, flags=re.I)
-    name = re.sub(r'\s*\(Lyric Video\)', '', name, flags=re.I)
-    name = re.sub(r'\s*\(Lyrics\)', '', name, flags=re.I)
-    name = re.sub(r'\s*\(Explicit\)', '', name, flags=re.I)
-    name = re.sub(r'\s*\(Audio\)', '', name, flags=re.I)
-    name = re.sub(r'\s*\(HD\)', '', name, flags=re.I)
-    name = re.sub(r'\s*\(HQ\)', '', name, flags=re.I)
-    name = re.sub(r'\s*\(Remaster[^)]*\)', '', name, flags=re.I)
-    name = re.sub(r'\s*\([^)]*\.com\)', '', name)
-    name = re.sub(r'\s*\[.*?\]', '', name)
+    for pattern in JUNK_PATTERNS:
+        name = re.sub(pattern, '', name, flags=re.I)
     # Strip leading track numbers (01, 02, etc.)
     name = re.sub(r'^\d{1,2}\.\s*', '', name)
     name = re.sub(r'^\d{1,2}\s*-\s*', '', name)
@@ -74,7 +80,7 @@ def clean_name(name):
 def parse_artist_title(filename):
     """Try to split 'Artist - Title' from a filename stem."""
     name = os.path.splitext(filename)[0]
-    for sep in [' - ', ' – ', ' — ']:
+    for sep in [' - ', ' \u2013 ', ' \u2014 ']:
         if sep in name:
             parts = name.split(sep, 1)
             return parts[0].strip(), parts[1].strip()
@@ -145,7 +151,7 @@ def clean_music(path, dry_run=True):
             continue
 
         # Normalize unicode separators
-        new_file = new_file.replace('–', '-').replace('—', '-')
+        new_file = new_file.replace('\u2013', '-').replace('\u2014', '-')
         # Collapse multiple spaces
         new_file = re.sub(r'\s+', ' ', new_file).strip()
 
@@ -169,7 +175,7 @@ def clean_music(path, dry_run=True):
     if renamed:
         print(f"\nChanges:")
         for old, new in renamed[:20]:  # Show first 20
-            print(f"  {old} → {new}")
+            print(f"  {old} -> {new}")
         if len(renamed) > 20:
             print(f"  ... and {len(renamed) - 20} more")
 

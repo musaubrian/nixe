@@ -35,10 +35,10 @@ manage_keys() {
 manage_stash() {
     mkdir -p ~/.db
     git clone git@github.com:musaubrian/stash ~/personal/stash --depth=1
-    pushd ~/persona/stash
+    pushd ~/personal/stash
 
     ansible-vault decrypt ./db/* ./wakatime/*
-    cp -v ./db/* ~/.db
+    cp -rv ./db/* ~/.db/
     cp -v ./wakatime/wakatime.cfg ~/.wakatime.cfg
     ansible-vault encrypt ./db/* ./wakatime/*
 

@@ -9,10 +9,13 @@ default-command = "log"
 diff-editor     = ":builtin"
 merge-editor = ":builtin"
 
-# [signing]
-# behavior        = "own"
-# backend         = "ssh"
-# path            = "/home/smin/.ssh/signing.pub"
+[signing]
+behavior        = "own"
+backend         = "ssh"
+key            = "~/.ssh/signing.pub"
+
+# [signing.backends.ssh]
+# alowed-signers = "~/.ssh/allowed_signers"
 
 [aliases]
 difft           = ["diff", "--tool=difft"]

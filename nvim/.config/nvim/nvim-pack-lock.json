@@ -1,11 +1,11 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "b137f63d89d0285ca76eed12e1923220e0aff8c1",
+      "rev": "8936aee785533553cb00b6a50f8c8a835ff46fdd",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "conform.nvim": {
-      "rev": "c2526f1cde528a66e086ab1668e996d162c75f4f",
+      "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "dressing.nvim": {
@@ -13,7 +13,7 @@
       "src": "https://github.com/stevearc/dressing.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "abf82a65f185bd54adc0679f74b7d6e1ada690c9",
+      "rev": "7c4faa3540d0781a28588cafbd4dd187a28ac6e3",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "minline.nvim": {
@@ -25,11 +25,11 @@
       "src": "https://github.com/norcalli/nvim-colorizer.lua"
     },
     "nvim-treesitter": {
-      "rev": "81aca2f9815e26f638f697df1d828ca290847b64",
+      "rev": "5cb05e1b0fa3c469958a2b26f36b3fe930af221c",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "oil.nvim": {
-      "rev": "f55b25e493a7df76371cfadd0ded5004cb9cd48a",
+      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "plenary.nvim": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "pye.nvim": {
-      "rev": "2b8d8534e8b36c13ccf32cf2139391961c3ee977",
+      "rev": "f8e4fc67f459d05ca36265e50e5009defade0273",
       "src": "https://github.com/musaubrian/pye.nvim"
     },
     "scratch.nvim": {
@@ -45,11 +45,11 @@
       "src": "https://github.com/musaubrian/scratch.nvim"
     },
     "telescope.nvim": {
-      "rev": "ad7d9580338354ccc136e5b8f0aa4f880434dcdc",
+      "rev": "5255aa27c422de944791318024167ad5d40aad20",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "undotree": {
-      "rev": "178d19e00a643f825ea11d581b1684745d0c4eda",
+      "rev": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d",
       "src": "https://github.com/mbbill/undotree"
     },
     "vim-easy-align": {
@@ -57,7 +57,7 @@
       "src": "https://github.com/junegunn/vim-easy-align"
     },
     "vim-fugitive": {
-      "rev": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4",
+      "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
       "src": "https://github.com/tpope/vim-fugitive"
     },
     "vim-sleuth": {

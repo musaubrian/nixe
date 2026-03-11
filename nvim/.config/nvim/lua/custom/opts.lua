@@ -1,5 +1,4 @@
--- vim.opt.guicursor = ""
-vim.opt.grepprg = "rg --vimgrep --smart-case"
+vim.opt.grepprg = "rg --vimgrep --no-messages --smart-case"
 vim.opt.splitright = true
 vim.opt.splitbelow = false
 vim.opt.inccommand = "split"
@@ -11,7 +10,7 @@ vim.opt.swapfile = false
 vim.opt.undodir = os.getenv "HOME" .. "/.cache/nvim/undodir"
 vim.opt.incsearch = true
 vim.opt.scrolloff = 8
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true

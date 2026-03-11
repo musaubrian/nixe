@@ -102,8 +102,6 @@ main() {
     manage_keys
     manage_stash
     setup_git_repo
-
-    sudo chsh -s $(which fish) #drink fish koolaid
 }
 
 main

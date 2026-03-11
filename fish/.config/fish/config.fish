@@ -41,3 +41,4 @@ if test -f "$HOME/.cargo/env"
 end
 
 alias reload='source ~/.config/fish/config.fish; and clear'
+source ~/.local/bin/scripts/pgs.fish

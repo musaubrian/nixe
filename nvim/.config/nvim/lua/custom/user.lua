@@ -134,21 +134,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  group = me_group,
-  callback = function(ev)
-    if not ev.match or ev.match == "" or ev.match == "text" then
-      vim.treesitter.stop()
-    end
-    pcall(function()
-      vim.treesitter.start()
-    end)
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+--   group = me_group,
+--   callback = function(ev)
+--     pcall(function()
+--       vim.treesitter.start()
+--     end)
+--     -- if not ev.match or ev.match == "" or ev.match == "text" then
+--     --   vim.treesitter.stop()
+--     -- end
+--   end,
+-- })
 
 vim.cmd [[
   let g:did_install_default_menus = 1
   let g:loaded_netrwPlugin = 0
+  let g:loaded_python3_provider = 0
 ]]
 
 vim.api.nvim_create_user_command("PackClean", function()
@@ -180,25 +181,10 @@ vim.api.nvim_create_user_command("PackUpdate", function()
   vim.pack.update()
 end, { desc = "Update plugins" })
 
-vim.api.nvim_create_user_command("TSUser", function()
-  require("nvim-treesitter").install {
-    "c",
-    "lua",
-    "vim",
-    "vimdoc",
-    "markdown",
-    "markdown_inline",
-    "query",
-    "svelte",
-    "zig",
-    "cpp",
-    "python",
-  }
-end, { desc = "Install my treesitter stuff" })
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "odin",
   callback = function()
     vim.opt_local.errorformat = "%f(%l:%c) %m, %-G%.%#"
+    vim.opt_local.makeprg = "./first.bin"
   end,
 })

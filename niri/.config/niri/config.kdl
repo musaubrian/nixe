@@ -379,7 +379,7 @@ binds {
     Mod+x { spawn "~/.local/bin/scripts/tasky.sh"; }
     Mod+Shift+v { spawn-sh "~/.local/bin/scripts/cliphist.sh way"; }
     Mod+e { spawn "thunar"; }
-    Mod+b { spawn "firefox"; }
+    Mod+b { spawn "helium"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,

@@ -1,6 +1,6 @@
 local oil = require "oil"
 oil.setup {
-  -- columns = { "permissions", "icon" },
+  columns = { "" },
   keymaps = {
     ["<C-h>"] = false,
     ["<C-l>"] = false,

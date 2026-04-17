@@ -6,7 +6,6 @@ KEYS_DIR="$ROOT_DIR/keys"
 STASH_DIR="$HOME/personal/stash"
 TO_DB="$STASH_DIR/db"
 WAKA_KEY="$STASH_DIR/wakatime/wakatime.cfg"
-# NIX_CONFIG="$ROOT_DIR/home/configuration.nix"
 
 
 cp ~/.ssh/* $KEYS_DIR

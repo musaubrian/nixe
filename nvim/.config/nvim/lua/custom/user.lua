@@ -35,18 +35,15 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 })
 
 vim.api.nvim_create_user_command("GenId", function()
-  local ok, uuid = pcall(vim.fn.system, "uuidgen")
-  if not ok then
-    vim.notify("Failed to gen uuid", vim.log.levels.ERROR)
+  local c = require "custom.common"
+  local id = c.GenId()
+  if not id or id == "" then
+    vim.notify("[GenId] Failed to gen id, bailing", vim.log.levels.ERROR)
+    return
   end
 
-  -- .*%- matches everything up to the last -
-  -- (.+)$ captures what's after it (the last segment)
-  local short = uuid:match(".*%-(.+)$"):gsub("\n", "")
-  if short then
-    vim.fn.setreg("+", short, "c")
-    vim.notify "Copied to clipboard"
-  end
+  vim.fn.setreg("+", id, "c")
+  vim.notify "Copied to clipboard"
 end, { desc = "Generate an id" })
 
 vim.api.nvim_create_autocmd({ "TermClose" }, {
@@ -75,16 +72,6 @@ vim.diagnostic.config {
   },
 }
 
-vim.api.nvim_create_user_command("Todo", function()
-  local query = vim.fn.input "What to do > "
-  vim.fn.system(string.format("python3 ~/scripts/gg.py -it '%s'", query))
-end, {})
-
-vim.api.nvim_create_user_command("Idea", function()
-  local query = vim.fn.input "What ya thinking > "
-  vim.fn.system(string.format("python3 ~/scripts/gg.py -id '%s'", query))
-end, {})
-
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
   callback = function(event)
@@ -92,6 +79,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client == nil then
       return
     end
+
+    -- Kill tsgo when we also have deno's lsp running
+    -- means we are in a deno project and tsgo will just eat up ram
+    -- for nothing
+    -- The delay is for tsgo to attach and startup
+    vim.defer_fn(function()
+      local deno_clients = vim.lsp.get_clients { name = "deno" }
+      local typescript_clients = vim.lsp.get_clients { name = "typescript" }
+      if #deno_clients > 0 and #typescript_clients > 0 then
+        typescript_clients[1]:stop()
+        vim.notify "[LSP] Disabled typescript lsp, preferring deno"
+      end
+    end, 500)
 
     if client:supports_method "textDocument/completion" then
       vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = false })
@@ -107,7 +107,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, {})
 
     vim.api.nvim_create_user_command("LspStop", function()
-      client:stop()
+      client:stop(1)
     end, {})
 
     vim.api.nvim_create_user_command("LspStart", function()
@@ -134,23 +134,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- vim.api.nvim_create_autocmd({ "FileType" }, {
---   group = me_group,
---   callback = function(ev)
---     pcall(function()
---       vim.treesitter.start()
---     end)
---     -- if not ev.match or ev.match == "" or ev.match == "text" then
---     --   vim.treesitter.stop()
---     -- end
---   end,
--- })
-
 vim.cmd [[
   let g:did_install_default_menus = 1
   let g:loaded_netrwPlugin = 0
   let g:loaded_python3_provider = 0
+
+  aunmenu PopUp
+  autocmd! nvim.popupmenu
 ]]
+
+vim.cmd "syntax off"
 
 vim.api.nvim_create_user_command("PackClean", function()
   local active_plugins = {}
@@ -188,3 +181,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.makeprg = "./first.bin"
   end,
 })
+
+vim.g.markdown_fenced_languages = {
+  "ts=typescript",
+}

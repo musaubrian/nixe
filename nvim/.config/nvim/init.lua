@@ -1,8 +1,10 @@
 require "custom.opts"
 require "custom.user"
 require "custom.keys"
-require "custom.jade"
 require "custom.snips"
+require "custom.tidos"
+
+vim.cmd.colorscheme "jed"
 
 local function gh(path)
   return "https://github.com/" .. path
@@ -28,7 +30,6 @@ vim.pack.add {
   { src = gh "tpope/vim-sleuth" },
   { src = gh "mbbill/undotree" },
   { src = gh "musaubrian/scratch.nvim" },
-  { src = gh "stevearc/dressing.nvim" },
   { src = gh "stevearc/oil.nvim" },
   { src = gh "stevearc/conform.nvim" },
   { src = gh "lewis6991/gitsigns.nvim" },

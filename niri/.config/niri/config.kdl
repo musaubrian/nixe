@@ -241,12 +241,12 @@ environment {
 spawn-at-startup "waybar"
 spawn-at-startup "nm-applet"
 spawn-at-startup "mako"
+spawn-at-startup "valkey-server"
 
 
 spawn-sh-at-startup "brightnessctl s 40"
-spawn-sh-at-startup "swaybg -i ~/.local/share/walls/kdeplasmager.png"
+spawn-sh-at-startup "swaybg -i ~/.local/share/walls/ubuntux.jpg"
 spawn-sh-at-startup "sik -b"
-spawn-sh-at-startup "seer"
 spawn-sh-at-startup "syncthing --no-browser"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"

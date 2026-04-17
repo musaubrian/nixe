@@ -36,12 +36,6 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
       }
     end, { desc = "[S]earch [S]cripts" })
 
-    vim.keymap.set("n", "<leader>nc", function()
-      builtin.find_files {
-        cwd = "~/personal/nixe",
-      }
-    end, { desc = "[N]ix [C]onfig" })
-
     vim.keymap.set("n", "<leader><space>", builtin.oldfiles, { desc = "Recently opened files" })
     vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Search [G]it [F]iles" })
     vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[S]earch [F]iles" })

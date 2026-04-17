@@ -1,4 +1,5 @@
 local treesitter = require "nvim-treesitter"
+
 treesitter.setup {
   sync_install = false,
   ignore_install = {},
@@ -17,15 +18,29 @@ treesitter.setup {
     "python",
   },
   auto_install = true,
-  highlight = { enable = true, additional_vim_regex_highlighting = true },
-  indent = { enable = true },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<c-space>",
-      node_incremental = "<c-space>",
-      scope_incremental = "<c-s>",
-      node_decremental = "<M-space>",
-    },
-  },
 }
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = "*",
+  callback = function()
+    pcall(vim.treesitter.start)
+
+    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.wo.foldmethod = "expr"
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    vim.wo.foldenable = false -- stops nvim from folding on buffer load (file open)
+
+    local select = require "vim.treesitter._select"
+
+    vim.keymap.set({ "x", "n" }, "<C-Space>", function()
+      if vim.fn.mode() == "n" then
+        vim.cmd "normal! v" -- enter visual mode first
+      end
+      select.select_parent(vim.v.count1)
+    end, { desc = "TS: increment node selection" })
+
+    vim.keymap.set("x", "<M-Space>", function()
+      select.select_child(vim.v.count1) -- shrink / go to child
+    end, { desc = "TS: decrement node selection" })
+  end,
+})

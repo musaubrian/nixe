@@ -15,13 +15,16 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
-vim.smartindent = true
-vim.o.mouse = "a"
-vim.o.clipboard = "unnamedplus"
-vim.o.undofile = true
-vim.o.ignorecase = false --Messed with the visual block find and replace
-vim.o.smartcase = true
+vim.opt.updatetime = 50
+vim.opt.completeopt = "menuone,noselect,fuzzy,noinsert"
+vim.opt.termguicolors = true
+vim.opt.smoothscroll = true
+vim.opt.mouse = "a"
+vim.opt.clipboard = "unnamedplus"
+vim.opt.undofile = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.path:append { "**" }
+vim.opt.wildoptions:append { "fuzzy" }
 vim.wo.signcolumn = "yes"
-vim.o.updatetime = 50
-vim.o.completeopt = "menuone,noselect"
-vim.o.termguicolors = true
+vim.smartindent = true

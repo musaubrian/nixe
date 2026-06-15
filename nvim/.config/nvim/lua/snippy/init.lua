@@ -55,7 +55,7 @@ end
 --- @param name string
 --- @param contents Snippet[]
 local function write_snip_file(name, contents)
-  local file = io.open(name, "w")
+  local file = io.open(name, "w+")
   if file == nil then
     return
   end
@@ -74,26 +74,13 @@ local function write_snip_file(name, contents)
     )
   end
 
-  file:write(string.format("{%s}", table.concat(snips, ",")))
+  local _, write_err = file:write(string.format("{%s}", table.concat(snips, ",")))
+  if write_err ~= nil then
+    file:close()
+    vim.notify("[ERROR] Failed to write snippet file " .. write_err)
+  end
+
   file:close()
-end
-
---- @param base_path string
-local function create_package_json(base_path)
-  local pkg_location = base_path .. "/package.json"
-  local file = io.open(pkg_location, "w")
-  if file == nil then
-    return
-  end
-
-  local snippets = {}
-  for lang, _ in pairs(M.snip_store) do
-    table.insert(snippets, string.format('{"language": "%s", "path": "%s"}', lang, "./" .. lang .. ".json"))
-  end
-
-  local pkg_contents =
-    string.format('{"name": "%s", "contributes": { "snippets": [%s]}}', M.opts.name, table.concat(snippets, ","))
-  file:write(pkg_contents)
 end
 
 --- @param store SnipStore
@@ -103,8 +90,6 @@ local function create_snippet_files(store)
   for lang, snippet in pairs(store) do
     write_snip_file(snippets_location .. "/" .. lang .. ".json", snippet)
   end
-
-  create_package_json(snippets_location)
 end
 
 vim.api.nvim_create_user_command("GenSnippets", function()

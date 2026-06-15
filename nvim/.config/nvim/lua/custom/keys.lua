@@ -56,6 +56,10 @@ vim.keymap.set("n", "<leader>tn", ":tabnext<CR>", {})
 vim.keymap.set("n", "<leader>pr", ":Typ<CR>", { desc = "Start typst previewer" })
 vim.keymap.set("n", "<leader>spr", ":Styp<CR>", { desc = "Stop typst previewer" })
 
+vim.keymap.set("n", "<leader>wk", function()
+  vim.cmd "map"
+end, { desc = "Available keybinds [W]hich [K]ey" })
+
 vim.keymap.set("n", "<leader>oo", ":cclose<CR>", { desc = "Close quickfix list" })
 vim.keymap.set("n", "<leader>lg", function()
   local query = vim.fn.input ">> "

@@ -9,7 +9,10 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, {
         ["<Down>"] = { "select_next", "fallback" },
         ["<C-e>"] = { "hide" },
         ["<A-CR>"] = { "select_and_accept" },
+        ["<C-j>"] = { "snippet_forward", "fallback" },
+        ["<C-k>"] = { "snippet_backward", "fallback" },
       },
+
       fuzzy = { implementation = "prefer_rust" },
 
       sources = {

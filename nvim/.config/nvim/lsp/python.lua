@@ -1,5 +1,5 @@
 return {
-  cmd = { "pylsp" },
+  cmd = { "ty", "server" },
 
   filetypes = { "python" },
   root_markers = {

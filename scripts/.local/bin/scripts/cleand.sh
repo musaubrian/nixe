@@ -4,7 +4,7 @@ image_ext=("jpg" "jpeg" "png" "gif" "svg")
 music_ext=("mp3" "m4a" "flac")
 video_ext=("mp4" "avi" "mkv" "wmv")
 document_ext=("pdf" "doc" "docx" "txt" "PDF" "csv" "CSV" "pptx" "xlsx")
-zips=("zip" "tar" "gzip" "gz")
+zips=("zip" "tar" "gzip" "tar.gz", "tar.xz")
 images=("iso")
 
 cd $downloads || exit

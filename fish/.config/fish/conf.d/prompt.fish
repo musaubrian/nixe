@@ -105,6 +105,8 @@ end
 
 __prompt_venv
 function fish_prompt
+    set -l last_status $status
+
     set -l venv_info
     if set -q __prompt_venv; and test -n "$__prompt_venv"
         set venv_info (set_color $fish_color_venv)"$__prompt_venv"(set_color normal)
@@ -117,7 +119,11 @@ function fish_prompt
         set git_info (set_color $fish_color_git)" ($__prompt_git)"(set_color normal)
     end
 
-    set __char (set_color $fish_color_char)" |"(set_color normal)
+    if test $last_status -ne 0
+        set __char (set_color red)" \\0"(set_color normal)
+    else
+        set __char (set_color $fish_color_char)" |"(set_color normal)
+    end
 
     printf "%s%s%s%s " $venv_info $cwd $git_info $__char
 end

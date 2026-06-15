@@ -15,7 +15,7 @@
 	defaultBranch = main
 
 [core]
-	editor        = nvim
+editor        = nvim
 
 [alias]
 	status        = status -s
@@ -44,3 +44,5 @@
 [column]
 	ui              = auto
 
+[remote "origin"]
+	prune = true

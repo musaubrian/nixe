@@ -4,7 +4,7 @@ local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = t
 -- [[ Highlight on yank ]]
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.hl_op()
   end,
   group = highlight_group,
   pattern = "*",
@@ -122,10 +122,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     nmap("gd", vim.lsp.buf.definition, "[G]o to [D]efinition")
-    nmap("gr", require("telescope.builtin").lsp_references, "[G]o to [R]eference")
+    nmap("gr", vim.lsp.buf.references, "[G]o to [R]eference")
     nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
     nmap("<leader>gD", vim.lsp.buf.type_definition, "Type [D]efinition")
-    nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+    -- nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
     nmap("<leader>rn", vim.lsp.buf.rename)
     nmap("<leader>ca", vim.lsp.buf.code_action)
 
@@ -141,6 +141,9 @@ vim.cmd [[
 
   aunmenu PopUp
   autocmd! nvim.popupmenu
+
+  let g:opamshare = substitute(system('opam var share'),'\n$','','''')
+  "execute "set rtp+=" . g:opamshare . "/merlin/vim"
 ]]
 
 vim.cmd "syntax off"

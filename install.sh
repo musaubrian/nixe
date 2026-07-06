@@ -16,11 +16,12 @@ install_base_packages() {
     stylua lua-language-server python-lsp-server typescript-language-server tinymist \
     marksman gopls tailwindcss-language-server \
     noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttf-jetbrains-mono gnu-free-fonts \
-    waybar wf-recorder wl-clipboard
+    waybar wf-recorder wl-clipboard \
+    breeze-icons
 }
 
 install_niri_packages() {
-    sudoe pacman -S --needed --noconfirm \
+    sudo pacman -S --needed --noconfirm \
         niri xwayland-satellite xdg-desktop-portal-gnome xdg-desktop-portal-gtk \
         swaybg
 }
@@ -62,7 +63,7 @@ install_aur_packages() {
     fi
 
     $AUR_HELPER -S --needed --noconfirm \
-        nwg-look pnpm xcursor-breeze
+        nwg-look
 
 }
 

@@ -244,7 +244,7 @@ spawn-at-startup "mako"
 
 
 spawn-sh-at-startup "brightnessctl s 40"
-// spawn-sh-at-startup "swaybg -i ~/.local/share/walls/kdeplasmager.png"
+spawn-sh-at-startup "swaybg -i ~/.local/share/walls/greenland.jpeg"
 spawn-sh-at-startup "sik -b"
 spawn-sh-at-startup "syncthing --no-browser"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
@@ -581,7 +581,7 @@ binds {
 
     // Move the focused window between the floating and the tiling layout.
     Mod+Shift+Space { toggle-window-floating; }
-    // Mod+Shift+V     { switch-focus-between-floating-and-tiling; }
+    Mod+Space       { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,

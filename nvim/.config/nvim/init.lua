@@ -33,7 +33,6 @@ vim.pack.add {
   { src = gh "dmtrKovalenko/fff.nvim" },
   { src = gh "tpope/vim-fugitive" },
   { src = gh "musaubrian/minline.nvim" },
-  { src = gh "wakatime/vim-wakatime" },
   { src = gh "junegunn/vim-easy-align" },
   { src = gh "norcalli/nvim-colorizer.lua" },
   { src = gh "tpope/vim-sleuth" },
@@ -43,7 +42,6 @@ vim.pack.add {
   { src = gh "stevearc/conform.nvim" },
   { src = gh "lewis6991/gitsigns.nvim" },
   { src = gh "musaubrian/pye.nvim" },
-  -- { src = gh "nvim-lua/plenary.nvim" },
   { src = gh "saghen/blink.cmp", version = vim.version.range "1.x" },
   { src = gh "nvim-treesitter/nvim-treesitter" },
 }

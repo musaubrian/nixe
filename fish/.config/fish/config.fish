@@ -35,8 +35,6 @@ set -gx PATH $PATH "$HOME/thirdparty/zig"
 set -gx NEXT_TELEMETRY_DEBUG 1
 set -gx PATH $PATH "$HOME/.bun/bin"
 
-gg -lst
-
 if test -f "$HOME/.cargo/env"
 end
 

@@ -5,3 +5,7 @@
 smin.lan {
     reverse_proxy 127.0.0.1
 }
+
+ambulex.test, crm.ambulex.test, county.ambulex.test, app.ambulex.test {
+    reverse_proxy 127.0.0.1:8000
+}

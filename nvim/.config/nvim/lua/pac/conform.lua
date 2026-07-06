@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         jsonc = { "oxfmt" },
         vue = { "oxfmt" },
         html = { "oxfmt" },
-        css = { "oxfmt" },
+        -- css = { "oxfmt" },
         go = { "goimports" },
         python = { "ruff_format" },
         rust = { "rustfmt" },

@@ -56,10 +56,6 @@
     "vim-sleuth": {
       "rev": "be69bff86754b1aa5adcbb527d7fcd1635a84080",
       "src": "https://github.com/tpope/vim-sleuth"
-    },
-    "vim-wakatime": {
-      "rev": "2a856d0b7863dc34ffc80647cb52fbd1319fe144",
-      "src": "https://github.com/wakatime/vim-wakatime"
     }
   }
 }

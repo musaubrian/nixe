@@ -5,19 +5,17 @@ KEYS_DIR="$ROOT_DIR/keys"
 
 STASH_DIR="$HOME/personal/stash"
 TO_DB="$STASH_DIR/db"
-WAKA_KEY="$STASH_DIR/wakatime/wakatime.cfg"
 
 
 cp ~/.ssh/* $KEYS_DIR
 echo "COPIED TO $KEYS_DIR"
 
 cp ~/.db/tinygo.db $TO_DB
-cp ~/.wakatime.cfg $WAKA_KEY
 echo "COPIED TO $STASH_DIR"
 
 pushd "$ROOT_DIR"
 
-ansible-vault encrypt ./keys/* $STASH_DIR/db/* $STASH_DIR/wakatime/*
+ansible-vault encrypt ./keys/* $STASH_DIR/db/*
 day=$(date '+%Y-%m-%d')
 
 git add .

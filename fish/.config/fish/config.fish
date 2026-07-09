@@ -34,6 +34,7 @@ set -gx PATH $PATH "$HOME/.cargo/bin"
 set -gx PATH $PATH "$HOME/thirdparty/zig"
 set -gx NEXT_TELEMETRY_DEBUG 1
 set -gx PATH $PATH "$HOME/.bun/bin"
+set -gx PATH $PATH "/usr/local/mysql/bin/:$PATH"
 
 if test -f "$HOME/.cargo/env"
 end

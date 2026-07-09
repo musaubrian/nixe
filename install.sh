@@ -12,18 +12,18 @@ install_base_packages() {
     hugo bottom ripgrep difftastic man-pages man-db less \
     firefox  syncthing fuzzel feh zathura zathura-pdf-poppler \
     telegram-desktop mpv sshfs \
-    nodejs npm go php \
+    nodejs npm go php clang llvm \
     stylua lua-language-server python-lsp-server typescript-language-server tinymist \
     marksman gopls tailwindcss-language-server \
     noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttf-jetbrains-mono gnu-free-fonts \
-    waybar wf-recorder wl-clipboard \
-    breeze-icons
+    waybar wf-recorder wl-clipboard cliphist \
+    btop jujutsu
 }
 
 install_niri_packages() {
     sudo pacman -S --needed --noconfirm \
         niri xwayland-satellite xdg-desktop-portal-gnome xdg-desktop-portal-gtk \
-        swaybg
+        swaybg swaylock
 }
 
 manage_keys() {

@@ -17,7 +17,7 @@ install_base_packages() {
     marksman gopls tailwindcss-language-server \
     noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttf-jetbrains-mono gnu-free-fonts \
     waybar wf-recorder wl-clipboard cliphist \
-    btop jujutsu
+    btop jujutsu kitty stow breeze-icons
 }
 
 install_niri_packages() {
@@ -38,10 +38,9 @@ manage_stash() {
     git clone git@github.com:musaubrian/stash ~/personal/stash --depth=1
     pushd ~/personal/stash
 
-    ansible-vault decrypt ./db/* ./wakatime/*
+    ansible-vault decrypt ./db/*
     cp -rv ./db/* ~/.db/
-    cp -v ./wakatime/wakatime.cfg ~/.wakatime.cfg
-    ansible-vault encrypt ./db/* ./wakatime/*
+    ansible-vault encrypt ./db/*
 
     popd
 }

@@ -299,6 +299,17 @@ window-rule {
     // default-column-width {}
 }
 
+// Make naut floating
+window-rule {
+    match title="Naut"
+    open-floating true
+}
+
+window-rule {
+    match title="nwg-look"
+    open-floating true
+}
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:

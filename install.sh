@@ -9,11 +9,11 @@ install_base_packages() {
     base-devel networkmanager ansible acpi bluez bluez-utils blueman pavucontrol brightnessctl \
     network-manager-applet fish mako \
     git wget gcc make sqlite unzip tree jq tmux ffmpeg fzf yt-dlp \
-    hugo bottom ripgrep difftastic man-pages man-db less \
+    hugo ripgrep difftastic man-pages man-db less \
     firefox  syncthing fuzzel feh zathura zathura-pdf-poppler \
     telegram-desktop mpv sshfs \
     nodejs npm go php clang llvm \
-    stylua lua-language-server python-lsp-server typescript-language-server tinymist \
+    stylua lua-language-server tinymist ty svelte-language-server \
     marksman gopls tailwindcss-language-server \
     noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-dejavu ttf-jetbrains-mono gnu-free-fonts \
     waybar wf-recorder wl-clipboard cliphist \

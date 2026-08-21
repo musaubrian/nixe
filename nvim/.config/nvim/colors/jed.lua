@@ -170,6 +170,7 @@ h("Deprecated",                         { fg = c.deprecated,         italic = tr
 h("TodoComment",                        { fg = c.orange_light,  italic = true, bold = true })
 h("TodoWarn",                           { fg = c.orange_light,  italic = true, bold = true })
 
+h("Comment",                            { link = "NonText", italic = true })
 h("EndOfBuffer",                        { link = "Mute" })
 h("Delimiter",                          { link = "NotNormal" })
 h("Identifier",                         { link = "Normal" })
@@ -177,7 +178,6 @@ h("Statement",                          { link = "NotNormal" })
 h("SignColumn",                         { link = "Mute" })
 h("FoldColumn",                         { link = "LineNr" })
 h("Folded",                             { link = "NonText" })
-h("Comment",                            { link = "NonText" })
 h("ColorColumn",                        { link = "ColorCol" })
 h("PreProc",                            { link = "Macro" })
 

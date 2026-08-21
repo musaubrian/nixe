@@ -1,13 +1,12 @@
 require("vim._core.ui2").enable {}
 
+require "custom.colorscheme"
 require "custom.opts"
 require "custom.user"
 require "custom.keys"
 require "custom.snippys.init"
 require "custom.tidos"
 require "custom.ctrl_s_shell"
-
-vim.cmd.colorscheme "jed"
 
 local function gh(path)
   return "https://github.com/" .. path

@@ -10,10 +10,12 @@ THIRDPARTY_DIRS=$(find "$THIRDPARTY" -maxdepth 1 -type d | sed "s|^$HOME/||")
 
 ALL_DIRS=$(echo -e "${PERSONAL_DIRS}\n${WORK_DIRS}\n$THIRDPARTY_DIRS")
 
-SELECTED_DIR=$(echo "$ALL_DIRS" | fzf --height 60% \
-    --layout reverse \
-    --prompt '# ' \
-    --pointer '> ')
+# SELECTED_DIR=$(echo "$ALL_DIRS" | fzf --height 60% \
+#     --layout reverse \
+#     --prompt '# ' \
+#     --pointer '> ')
+#
+SELECTED_DIR=$(echo "$ALL_DIRS" | zf)
 
 # switch to session if already in a tmux session
 # else attach to it

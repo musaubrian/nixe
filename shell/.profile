@@ -31,3 +31,4 @@ export XDG_CACHE_HOME="$HOME/.cache"
 #     PATH="$HOME/bin:$PATH"
 # fi
 #
+. "$HOME/.cargo/env"

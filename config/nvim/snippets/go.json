@@ -1,0 +1,1 @@
+{"gof":{"prefix":"gof","body":["go func() {","	${1:body}","}()"],"description":"Go anonymous function"},"ei":{"prefix":"ei","body":["if err != nil {","	${1:handle}","}","${2}"],"description":"Error handling golang"}}

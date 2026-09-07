@@ -1,0 +1,1 @@
+{"efg":{"prefix":"efg","body":["Effect.gen(function* () { ${1} })"],"description":"Effect.gen(function* () {...})"},"etp":{"prefix":"etp","body":["Effect.tryPromise({","  try: () => ${1},","  catch: (error) => new ${2}","})"],"description":"Effect.tryPromise({...})"},"erp":{"prefix":"erp","body":["Effect.runPromise(${1})"],"description":"Effect.runPromise(...)"}}

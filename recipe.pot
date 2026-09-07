@@ -1,0 +1,48 @@
+:b create @home/.ssh/
+:b create @home/.local/bin/
+:b create @home/.local/share/
+
+:wp base_package {
+
+}
+
+:wp niri_packages {
+}
+
+:wp keys {
+// :ex ansible-vault decrypt ./db/*
+}
+
+:wp stash {
+  :b create @home/.db/
+  :ex git clone git@github.com:musaubrian/stash @home/personal/stash --depth=1
+  :ex ansible-vault decrypt @home/personal/db/*
+  :b copy @home/personal/db/ @home/.db/
+  :ex ansible-vault encrypt @home/personal/db/*
+}
+
+:wp services {
+  :ex sudo systemctl enable NetworkManager
+  :ex sudo systemctl enable sshd
+  :ex suo systemctl enable bluetooth.service
+}
+
+:wp dotfiles {
+  :sym @home/personal/nixe/config/git/ @home/.config/git
+  :sym @home/personal/nixe/config/jj/ @home/.config/jj
+  :sym @home/personal/nixe/config/fish/ @home/.config/fish
+  :sym @home/personal/nixe/config/nvim/ @home/.config/nvim
+  :sym @home/personal/nixe/config/mako/ @home/.config/mako
+  :sym @home/personal/nixe/config/niri/ @home/.config/niri
+  :sym @home/personal/nixe/config/caddy/ @home/.config/caddy
+  :sym @home/personal/nixe/config/kitty/ @home/.config/kitty
+  :sym @home/personal/nixe/config/waybar/ @home/.config/waybar
+  :sym @home/personal/nixe/config/fuzzel/ @home/.config/fuzzel
+  :sym @home/personal/nixe/config/walls/ @home/.local/share/walls
+  :sym @home/personal/nixe/config/scripts/ @home/.local/bin/scripts
+}
+
+:wp update_git_repo {
+  :ex git remote remove origin
+  :ex git remote add origin git@github.com:musaubrian/nixe
+}

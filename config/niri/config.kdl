@@ -305,6 +305,7 @@ window-rule {
     match title="nwg-look"
     match title="Naut"
     match title="Bluetooth Devices"
+    match title="Volume Control"
     open-floating true
 }
 

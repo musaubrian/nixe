@@ -3,7 +3,6 @@
 :b create @home/.local/share/
 
 :wp base_package {
-
 }
 
 :wp niri_packages {
@@ -40,6 +39,9 @@
   :sym @home/personal/nixe/config/fuzzel/ @home/.config/fuzzel
   :sym @home/personal/nixe/config/walls/ @home/.local/share/walls
   :sym @home/personal/nixe/config/scripts/ @home/.local/bin/scripts
+  :sym @home/personal/nixe/config/shell/.bashrc @home/.bashrc
+  :sym @home/personal/nixe/config/shell/.aliases @home/.aliases
+  :sym @home/personal/nixe/config/shell/.profile @home/.profile
 }
 
 :wp update_git_repo {

@@ -1,5 +1,6 @@
 abbr --command jj ss --set-cursor show % --simple
-abbr --command jj move --set-cursor bookmark move % --to @-
+abbr --command jj move  --set-cursor bookmark move % --to @-
+abbr --command jj moveb --set-cursor bookmark move % --to @- --allow-backwards
 abbr --command jj create --set-cursor bookmark create %
 abbr --command jj delete --set-cursor bookmark delete %
 abbr --command jj fetch git fetch

@@ -3,9 +3,23 @@
 :b create @home/.local/share/
 
 :wp base_package {
+  :ex sudo pacman -S --needed --noconfirm base-devel networkmanager \
+      ansible acpi bluez bluez-utils blueman pavucontrol \
+      brightnessctl network-manager-applet fish mako git wget \
+      gcc make sqlite unzip tree jq \
+      tmux ffmpeg fzf yt-dlp hugo ripgrep \
+      difftastic man-pages man-db less firefox syncthing \
+      fuzzel feh zathura zathura-pdf-poppler telegram-desktop mpv \
+      sshfs nodejs npm go php clang \
+      llvm stylua lua-language-server tinymist ty svelte-language-server \
+      marksman gopls tailwindcss-language-server noto-fonts noto-fonts-cjk noto-fonts-emoji \
+      ttf-dejavu ttf-jetbrains-mono gnu-free-fonts waybar wf-recorder wl-clipboard \
+      cliphist btop jujutsu kitty stow breeze-icons
 }
 
 :wp niri_packages {
+  :ex sudo pacman -S --needed --noconfirm niri xwayland-satellite \
+      xdg-desktop-portal-gnome xdg-desktop-portal-gtk swaybg swaylock
 }
 
 :wp keys {
@@ -18,6 +32,11 @@
   :ex ansible-vault decrypt @home/personal/db/*
   :b copy @home/personal/db/ @home/.db/
   :ex ansible-vault encrypt @home/personal/db/*
+}
+
+:wp yay {
+  :ex git clone https://aur.archlinux.org/yay.git /tmp/yay/
+  :ex makepkg -si /tmp/yay/
 }
 
 :wp services {
@@ -44,7 +63,29 @@
   :sym @home/personal/nixe/config/shell/.profile @home/.profile
 }
 
+:wp fonts {
+  :b create @home/.fonts
+  :ex wget https://github.com/ahatem/IoskeleyMono/releases/download/v2.1.0/IoskeleyMono-Term.zip -O ./IoskeleyMono-Term.zip
+  :ex unzip -q -o IoskeleyMono-Term.zip -d IoskeleyMono-Term
+// :b move ./IoskeleyMono-Term/ @home/.fonts/IoskeleyMono-Term/
+// :ex fc-cache
+}
+
+:wp zen {
+  :ex wget https://github.com/zen-browser/desktop/releases/latest/download/zen-x86_64.AppImage -O zen
+  :ex chmod +x zen
+  :b move ./zen @home/.local/bin/zen
+  :b create @home/.local/share/applications/
+  :b copy ./config/desktop/zen.desktop @home/.local/share/applications/zen.desktop
+}
+
 :wp update_git_repo {
   :ex git remote remove origin
   :ex git remote add origin git@github.com:musaubrian/nixe
+}
+
+:wp setup_php {
+  :ex sudo pacman -Syu --needed php composer php-gd \
+      php-sqlite php-sodium // example
+// example
 }

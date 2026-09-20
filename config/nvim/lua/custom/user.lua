@@ -125,7 +125,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     nmap("gr", vim.lsp.buf.references, "[G]o to [R]eference")
     nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
     nmap("<leader>gD", vim.lsp.buf.type_definition, "Type [D]efinition")
-    -- nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
     nmap("<leader>rn", vim.lsp.buf.rename)
     nmap("<leader>ca", vim.lsp.buf.code_action)
 
@@ -141,9 +140,6 @@ vim.cmd [[
 
   aunmenu PopUp
   autocmd! nvim.popupmenu
-
-  let g:opamshare = substitute(system('opam var share'),'\n$','','''')
-  "execute "set rtp+=" . g:opamshare . "/merlin/vim"
 ]]
 
 vim.cmd "syntax off"
@@ -172,10 +168,6 @@ vim.api.nvim_create_user_command("PackClean", function()
     vim.pack.del(inactive_plugins)
   end
 end, { desc = "Remove unused plugins" })
-
-vim.api.nvim_create_user_command("PackUpdate", function()
-  vim.pack.update()
-end, { desc = "Update plugins" })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "odin",

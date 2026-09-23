@@ -3,7 +3,7 @@
 :b create @home/.local/share/
 
 :wp base_package {
-  :ex sudo pacman -S --needed --noconfirm base-devel networkmanager \
+  :ex sudo pacman -S --needed --noconfirm base-devel networkManager \
       ansible acpi bluez bluez-utils blueman pavucontrol \
       brightnessctl network-manager-applet fish mako git wget \
       gcc make sqlite unzip tree jq \
@@ -13,8 +13,8 @@
       sshfs nodejs npm go php clang \
       llvm stylua lua-language-server tinymist ty svelte-language-server \
       marksman gopls tailwindcss-language-server noto-fonts noto-fonts-cjk noto-fonts-emoji \
-      ttf-dejavu ttf-jetbrains-mono gnu-free-fonts waybar wf-recorder wl-clipboard \
-      cliphist btop jujutsu kitty stow breeze-icons
+      ttf-dejavu ttf-jetbrains-mono gnu-free-fonts waybar wl-clipboard cliphist \
+      btop jujutsu kitty
 }
 
 :wp niri_packages {
@@ -23,7 +23,20 @@
 }
 
 :wp keys {
-// :ex ansible-vault decrypt ./db/*
+  :ex ansible-vault decrypt ./keys/*
+  :b copy ./keys/ ~/.ssh-copy/
+  :ex ansible-vault encrypt ./keys/*
+}
+
+:wp yay {
+  :ex git clone https://aur.archlinux.org/yay.git /tmp/yay/
+  :ex pushd /tmp/yay/ && makepkg -si && popd
+}
+
+:wp services {
+  :ex sudo systemctl enable NetworkManager
+  :ex sudo systemctl enable sshd
+  :ex sudo systemctl enable bluetooth.service
 }
 
 :wp stash {
@@ -32,17 +45,6 @@
   :ex ansible-vault decrypt @home/personal/db/*
   :b copy @home/personal/db/ @home/.db/
   :ex ansible-vault encrypt @home/personal/db/*
-}
-
-:wp yay {
-  :ex git clone https://aur.archlinux.org/yay.git /tmp/yay/
-  :ex makepkg -si /tmp/yay/
-}
-
-:wp services {
-  :ex sudo systemctl enable NetworkManager
-  :ex sudo systemctl enable sshd
-  :ex suo systemctl enable bluetooth.service
 }
 
 :wp dotfiles {
@@ -54,7 +56,7 @@
   :sym @home/personal/nixe/config/niri/ @home/.config/niri
   :sym @home/personal/nixe/config/caddy/ @home/.config/caddy
   :sym @home/personal/nixe/config/kitty/ @home/.config/kitty
-  :sym @home/personal/nixe/config/waybar/ @home/.config/waybar
+  :sym @home/personal/nixe/config/Waybar/ @home/.config/waybar
   :sym @home/personal/nixe/config/fuzzel/ @home/.config/fuzzel
   :sym @home/personal/nixe/config/walls/ @home/.local/share/walls
   :sym @home/personal/nixe/config/scripts/ @home/.local/bin/scripts
@@ -85,7 +87,6 @@
 }
 
 :wp setup_php {
-  :ex sudo pacman -Syu --needed php composer php-gd \
-      php-sqlite php-sodium // example
-// example
+  :ex sudo pacman -Syu --noconfirm --needed php composer php-gd \
+      php-sqlite php-sodium
 }

@@ -1,0 +1,19 @@
+{
+  "name": "pi",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "packageManager": "npm",
+  "workspaces": [
+    "agent/extensions/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@earendil-works/pi-ai": "^1.0.4",
+    "@earendil-works/pi-coding-agent": "^1.0.4",
+    "@earendil-works/pi-tui": "^1.0.4",
+    "typebox": "^1.3.36"
+  }
+}

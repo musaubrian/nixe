@@ -8,6 +8,15 @@ s.add {
       body = "Effect.gen(function* () { ${1} })",
     },
     {
+      trig = "efn",
+      desc = "Effect.fn('...')(function* (...) {})",
+      body = {
+        'const ${1} = Effect.fn("${2}")(function* (${3}) {',
+        "   ${4}",
+        "}",
+      },
+    },
+    {
       trig = "etp",
       desc = "Effect.tryPromise({...})",
       body = {

@@ -18,13 +18,16 @@ local hooks = function(ev)
   if kind == "install" or kind == "update" then
     if name == "blink.cmp" then
       vim.system({ "cargo", "build", "--release" }, { cwd = ev.data.path })
-      vim.notify("Built <" .. name .. ">")
+    elseif name == "cursortab" then
+      -- cd server && go build
+      vim.system({ "go", "build" }, { cwd = ev.data.path .. "/server" })
     elseif name == "fff.nvim" then
       if not ev.data.active then
         vim.cmd.packadd "fff.nvim"
       end
       require("fff.download").download_or_build_binary()
     end
+    vim.notify("Setup <" .. name .. ">")
   end
 end
 vim.api.nvim_create_autocmd("PackChanged", { callback = hooks })
@@ -42,6 +45,7 @@ vim.pack.add {
   { src = gh "lewis6991/gitsigns.nvim" },
   { src = gh "musaubrian/pye.nvim" },
   { src = gh "saghen/blink.cmp", version = vim.version.range "1.x" },
+  { src = gh "cursortab/cursortab.nvim" },
   { src = gh "nvim-treesitter/nvim-treesitter" },
 }
 
@@ -51,3 +55,4 @@ require "pac.blink"
 require "pac.conform"
 require "pac.treesitter"
 require "pac.fff"
+require "pac.cursortab"

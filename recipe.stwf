@@ -59,6 +59,7 @@
   :sym @home/personal/nixe/config/shell/.bashrc @home/.bashrc
   :sym @home/personal/nixe/config/shell/.aliases @home/.aliases
   :sym @home/personal/nixe/config/shell/.profile @home/.profile
+  :sym @home/personal/nixe/pi/ @home/.pi
 }
 
 :wp fonts {

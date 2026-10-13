@@ -81,17 +81,3 @@ vim.keymap.set("n", "<leader>sw", function()
   vim.cmd "copen"
 end, { silent = true })
 vim.keymap.set("n", "<leader>d", vim.diagnostic.setqflist, { desc = "Diagnostics to quickfix" })
-
-vim.keymap.set("n", "<leader>of", function()
-  if vim.bo.filetype ~= "odin" then
-    vim.notify("Not in an odin file", vim.log.levels.WARN)
-    return
-  end
-
-  local query = vim.fn.input ">> "
-  if query == "" then
-    return
-  end
-  vim.cmd(":silent grep! " .. query .. " ~/thirdparty/odin/{base,core,vendor,examples}")
-  vim.cmd "copen"
-end, { silent = true })

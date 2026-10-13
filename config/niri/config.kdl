@@ -306,6 +306,7 @@ window-rule {
     match title="Naut"
     match title="Bluetooth Devices"
     match title="Volume Control"
+    match title="Firefox - Choose a profile"
     open-floating true
 }
 
@@ -387,8 +388,8 @@ binds {
 
     Mod+x { spawn "~/.local/bin/scripts/tasky.sh"; }
     Mod+Shift+v { spawn-sh "~/.local/bin/scripts/cliphist.sh way"; }
-    Mod+e { spawn "thunar"; }
-    Mod+b { spawn "zen"; }
+    Mod+e { spawn "nautilus"; }
+    Mod+b { spawn "firefox"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,

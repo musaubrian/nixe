@@ -2,8 +2,8 @@ return {
   init_options = {
     hostInfo = "neovim",
   },
-  cmd = { "tsgo", "--lsp", "--stdio" },
-  -- cmd = { "typescript-language-server", "--stdio" },
+  -- cmd = { "tsgo", "--lsp", "--stdio" },
+  cmd = { "typescript-language-server", "--stdio" },
   filetypes = {
     "javascript",
     "javascriptreact",

@@ -24,7 +24,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.path:append { "**" }
-vim.opt.wildoptions:append { "fuzzy" }
+vim.opt.path:append "**"
+vim.opt.wildoptions:append "fuzzy"
 vim.wo.signcolumn = "yes"
 vim.smartindent = true

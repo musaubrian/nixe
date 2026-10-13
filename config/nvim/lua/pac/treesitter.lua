@@ -16,6 +16,7 @@ treesitter.setup {
     "zig",
     "cpp",
     "python",
+    "sql",
   },
   auto_install = true,
 }
